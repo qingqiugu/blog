@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+  
+  <link rel="stylesheet" href="/blog/lib/animate-css/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rcore-os.github.io","root":"/blog/","scheme":"Muse","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
+  </script>
+
+  <meta name="description" content="安装  安装 WSL2● 搜索开发者选项并打开，从控制面板-程序-启动或关闭Windows功能打开 适用于Linux的Windows子系统：https:&#x2F;&#x2F;wslstorestorage.blob.core.windows.net&#x2F;wslblob&#x2F;wsl_update_x64.msi● 下载并安装适用于 x64 计算机的 WSL2 Linux 内核更新包● 启用“虚拟机平台”可选功能：管理员打开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&lt;2024春季开源操作系统训练营第一阶段总结-邹荇江&gt;">
+<meta property="og:url" content="http://rcore-os.github.io/blog/2024/05/02/2024%20%E6%98%A5%E5%A4%8F%E5%AD%A3%E5%BC%80%E6%BA%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%AD%E7%BB%83%E8%90%A5%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93-%E9%82%B9%E8%8D%87%E6%B1%9F/index.html">
+<meta property="og:site_name" content="rcore-os Blog">
+<meta property="og:description" content="安装  安装 WSL2● 搜索开发者选项并打开，从控制面板-程序-启动或关闭Windows功能打开 适用于Linux的Windows子系统：https:&#x2F;&#x2F;wslstorestorage.blob.core.windows.net&#x2F;wslblob&#x2F;wsl_update_x64.msi● 下载并安装适用于 x64 计算机的 WSL2 Linux 内核更新包● 启用“虚拟机平台”可选功能：管理员打开">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-05-02T00:34:19.000Z">
+<meta property="article:modified_time" content="2024-05-01T16:59:02.213Z">
+<meta property="article:author" content="rcore-os Group">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://rcore-os.github.io/blog/2024/05/02/2024%20%E6%98%A5%E5%A4%8F%E5%AD%A3%E5%BC%80%E6%BA%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%AD%E7%BB%83%E8%90%A5%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93-%E9%82%B9%E8%8D%87%E6%B1%9F/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title><2024春季开源操作系统训练营第一阶段总结-邹荇江> | rcore-os Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <main class="main">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">rcore-os Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rcore-os Group</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">362</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">374</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </header>
+
+      
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+      <div class="main-inner">
+        
+
+        <div class="content post posts-expand">
+          
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://rcore-os.github.io/blog/2024/05/02/2024%20%E6%98%A5%E5%A4%8F%E5%AD%A3%E5%BC%80%E6%BA%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%AD%E7%BB%83%E8%90%A5%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93-%E9%82%B9%E8%8D%87%E6%B1%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="rcore-os Group">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rcore-os Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          <2024春季开源操作系统训练营第一阶段总结-邹荇江>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-05-02 00:34:19" itemprop="dateCreated datePublished" datetime="2024-05-02T00:34:19+00:00">2024-05-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-01 16:59:02" itemprop="dateModified" datetime="2024-05-01T16:59:02+00:00">2024-05-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>安装</p>
+<ol>
+<li>安装 WSL2<br>● 搜索开发者选项并打开，从控制面板-程序-启动或关闭Windows功能打开 适用于Linux的Windows子系统：<a href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi" target="_blank" rel="noopener">https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi</a><br>● 下载并安装适用于 x64 计算机的 WSL2 Linux 内核更新包<br>● 启用“虚拟机平台”可选功能：管理员打开 PowerShell 并运行：dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart<br>● 将 WSL2 设置为默认版本：继续运行 wsl –set-default-version 2<br>● 下载安装 Ubuntu 22.04 并按步骤设置账户与密码</li>
+<li>安装 WSL2 下的 Rust 与 Git<br>● 更新包列表：打开 Ubuntu，输入 sudo apt update<br>● 安装依赖项：输入 sudo apt install curl build-essential<br>● 安装 Rust：输入 curl –proto ‘=https’ –tlsv1.2 -sSf <a href="https://sh.rustup.rs" target="_blank" rel="noopener">https://sh.rustup.rs</a> | sh<br>● 安装 Git：输入  sudo apt install git</li>
+<li>使用 SSH 密钥克隆仓库至本地<br>● 使用命令新的SSH密钥：ssh-keygen -t rsa -b 4096 -C “<a href="mailto:your_email@example.com">your_email@example.com</a>“<br>● 使用cat命令查看公钥 id_rsa.pub 文件内容：cat ~/.ssh/id_rsa.pub<br>● 在 github 中输入 SSH 内容<br>● 使用SSH协议克隆仓库：git clone <a href="mailto:git@github.com">git@github.com</a>:LearningOS/rust-rustlings-2024-spring-“xxx”.git<br>● 进入仓库目录：cd rust-rustlings-2024-spring-“xxx”<br>● 安装rustlings：cargo install –force –path .</li>
+<li>使用 VS Code 练习<br>● 点击左下角远程主机，连接后在上方搜索框内找到本地 rust-rustlings-2024-spring-“xxx” 打开</li>
+<li>新建 Rust 项目<br>● 打开 Ubuntu 新建 Rust 文件夹：mkdir “Rust”<br>● 移动到 Rust：cd Rust<br>● 安装 Rand 库：在VS code打开Cargo.toml，在最后一行输入 rand = “0.8.5”<br>● 建立新文件 cargo 目录：cargo new guessing_game<br>● 移动：cd new guessing_game<br>● 退回上一级文件夹：cd ..</li>
+<li>Git 提交<br>● 设置全局仓库邮箱：git config –global user.email “xxx.com”<br>● 设置全局仓库用户名：git config –global user.name “xxx”<br>● 提交缓存区：git add .<br>● 将缓存区内容提交到本地仓库：git commit -m “update”<br>● 将本地仓库内容提交到远程仓库：git push</li>
+<li>发布 Blog<br>● 登录 github 打开 rcore-os/blog 仓库，右上角 fork 后，克隆仓库至本地：git clone <a href="mailto:git@github.com">git@github.com</a>:xxx/blog.git<br>● 添加NodeSource 的仓库：进入Ubuntu，curl -sL <a href="https://deb.nodesource.com/setup_current.x" target="_blank" rel="noopener">https://deb.nodesource.com/setup_current.x</a> | sudo -E bash -<br>● 更新包列表：sudo apt-get update<br>● 安装node.js：输入 sudo apt-get install nodejs，安装完成后输入 node -v 与 npm -v 检查（注意如果没添加 NodeSource 仓库，安装版本太老，且版本不兼容，需卸载后安装）<br>● 安装 Hexo：sudo npm install -g hexo-cli<br>● 进入 blog 文件夹并安装相应包：cd blog；npm install hexo –save<br>● 创建新博客：hexo n “&lt;2024春季开源操作系统训练营第一阶段总结-xxx&gt;”</li>
+</ol>
+<p>rustlings<br>intro<br>intro2<br>fn main() {<br>    let world=”World”;<br>    println!(“Hello {world}!”);<br>}<br>variables<br>variables1<br>变量使用前需要初始化<br>fn main() {<br>    let x = 5;<br>    println!(“x has the value {}”, x);<br>}<br>variables2<br>变量使用前需要绑定值<br>fn main() {<br>    let x=1;<br>    if x == 10 {<br>        println!(“x is ten!”);<br>    } else {<br>        println!(“x is not ten!”);<br>    }<br>}<br>variables3<br>同上<br>fn main() {<br>    let x: i32 =0;<br>    println!(“Number {}”, x);<br>}<br>variables4<br>对于可变变量初始化时，需要添加 mut 使其可变<br>fn main() {<br>    let mut x = 3;<br>    println!(“Number {}”, x);<br>    x = 5; // don’t change this line<br>    println!(“Number {}”, x);<br>}<br>variables5<br>对于变量再次利用时，需要将变量重新初始化<br>fn main() {<br>    let number = “T-H-R-E-E”; // don’t change this line<br>    println!(“Spell a Number : {}”, number);<br>    let number = 3; // don’t rename this variable<br>    println!(“Number plus two is : {}”, number + 2);<br>}<br>variables6<br>对于 const 常量定义：const+全大写变量名+变量类型<br>const NUMBER:i32 = 3;<br>fn main() {<br>    println!(“Number {}”, NUMBER);<br>}<br>fuctions<br>fuctions1<br>函数使用前声明<br>fn call_me(){}<br>fn main() {<br>    call_me();<br>}</p>
+<p>fuctions2<br>对于函数形参必须指定参数类型<br>n main() {<br>    call_me(3);<br>}</p>
+<p>fn call_me(num:i32) {<br>    for i in 0..num {<br>        println!(“Ring! Call number {}”, i + 1);<br>    }<br>}</p>
+<p>fuctions3<br>函数实参与形参不匹配，需补上实参<br>fn main() {<br>    call_me(3);<br>}</p>
+<p>fn call_me(num: u32) {<br>    for i in 0..num {<br>        println!(“Ring! Call number {}”, i + 1);<br>    }<br>}<br>fuctions4<br>返回值需要指定数据类型<br>fn main() {<br>    let original_price = 51;<br>    println!(“Your sale price is {}”, sale_price(original_price));<br>}</p>
+<p>fn sale_price(price: i32) -&gt; i32{<br>    if is_even(price) {<br>        price - 10<br>    } else {<br>        price - 3<br>    }<br>}</p>
+<p>fn is_even(num: i32) -&gt; bool {<br>    num % 2 == 0<br>}<br>fuctions5<br>区分表达式与语句，返回值是语句故而不能有分机<br>fn main() {<br>    let answer = square(3);<br>    println!(“The square of 3 is {}”, answer);<br>}</p>
+<p>fn square(num: i32) -&gt; i32 {<br>    num * num<br>}</p>
+<p>if<br>if1<br>输出最大数；if 声明部分不需要加括号<br>pub fn bigger(a: i32, b: i32) -&gt; i32 {<br>    // Complete this function to return the bigger number!<br>    // Do not use:<br>    // - another function call<br>    // - additional variables<br>    if a&gt;b<br>    {a}<br>    else<br>    {b}<br>}<br>if2<br>按测试填补<br>pub fn foo_if_fizz(fizzish: &amp;str) -&gt; &amp;str {<br>    if fizzish == “fizz” {<br>        “foo”<br>    } else if fizzish == “fuzz” {<br>            “bar”<br>        } else {<br>            “baz”<br>    }<br>}<br>if3<br>变量不应被赋予不同类型<br>pub fn animal_habitat(animal: &amp;str) -&gt; &amp;’static str {<br>    let identifier = if animal == “crab” {<br>        1<br>    } else if animal == “gopher” {<br>        2<br>    } else if animal == “snake” {<br>        3<br>    } else {<br>        4<br>    };</p>
+<pre><code>// DO NOT CHANGE THIS STATEMENT BELOW
+let habitat = if identifier == 1 {
+    &quot;Beach&quot;
+} else if identifier == 2 {
+    &quot;Burrow&quot;
+} else if identifier == 3 {
+    &quot;Desert&quot;
+} else {
+    &quot;Unknown&quot;
+};
+
+habitat</code></pre><p>}<br>quiz<br>quiz1<br>fn calculate_price_of_apples(num:i32) -&gt;i32 {<br>    if num&gt;40{<br>        num<br>    }<br>    else {<br>        num*2<br>    }<br>}<br>quiz2<br>quiz3<br>primitive_types<br>primitive_types1<br>变量初始化<br>fn main() {<br>    // Booleans (<code>bool</code>)</p>
+<pre><code>let is_morning = true;
+if is_morning {
+    println!(&quot;Good morning!&quot;);
+}
+
+let is_evening = false;
+// Finish the rest of this line like the example! Or make it be false!
+if is_evening {
+    println!(&quot;Good evening!&quot;);
+}</code></pre><p>}<br>primitive_types2<br>变量初始化，单引号表示字符字面量，比如 ‘a’ 表示字符 a<br>fn main() {<br>    // Characters (<code>char</code>)</p>
+<pre><code>// Note the _single_ quotes, these are different from the double quotes
+// you&apos;ve been seeing around.
+let my_first_initial = &apos;C&apos;;
+if my_first_initial.is_alphabetic() {
+    println!(&quot;Alphabetical!&quot;);
+} else if my_first_initial.is_numeric() {
+    println!(&quot;Numerical!&quot;);
+} else {
+    println!(&quot;Neither alphabetic nor numeric!&quot;);
+}
+
+let your_character = &apos;5&apos;;
+// Finish this line like the example! What&apos;s your favorite character?
+// Try a letter, try a number, try a special character, try a character
+// from a different language than your own, try an emoji!
+if your_character.is_alphabetic() {
+    println!(&quot;Alphabetical!&quot;);
+} else if your_character.is_numeric() {
+    println!(&quot;Numerical!&quot;);
+} else {
+    println!(&quot;Neither alphabetic nor numeric!&quot;);
+}</code></pre><p>}</p>
+<p>primitive_types3<br>定义数组<br>fn main() {<br>    let a = [2;100];</p>
+<pre><code>if a.len() &gt;= 100 {
+    println!(&quot;Wow, that&apos;s a big array!&quot;);
+} else {
+    println!(&quot;Meh, I eat arrays like that for breakfast.&quot;);
+}</code></pre><p>}<br>primitive_types4<br>数组切片，前闭后开<br>fn slice_out_of_array() {<br>    let a = [1, 2, 3, 4, 5];</p>
+<pre><code>let nice_slice = &amp;a[1..4];
+
+assert_eq!([2, 3, 4], nice_slice)</code></pre><p>}<br>primitive_types5<br>元组类型<br>fn main() {<br>    let cat = (“Furry McFurson”, 3.5);<br>    let (name, age) = cat;/* your pattern here */</p>
+<pre><code>println!(&quot;{} is {} years old.&quot;, name, age);</code></pre><p>}<br>primitive_types6<br>元组数据的索引访问<br>fn indexing_tuple() {<br>    let numbers = (1, 2, 3);<br>    // Replace below ??? with the tuple indexing syntax.<br>    let second = numbers.1;</p>
+<pre><code>assert_eq!(2, second,
+    &quot;This is not the 2nd number in the tuple!&quot;)</code></pre><p>}<br>vecs<br>vecs1<br>初始化vector，<br>fn array_and_vec() -&gt; ([i32; 4], Vec<i32>) {<br>    let a = [10, 20, 30, 40]; // a plain array<br>    let v = vec![10, 20, 30, 40];<br>    // TODO: declare your vector here with the macro for vectors</i32></p>
+<pre><code>(a, v)</code></pre><p>}<br>vecs2</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2024/05/01/axsl666-2023%E7%A7%8B%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93/" rel="prev" title="axsl666-2023秋第二阶段总结">
+      <i class="fa fa-chevron-left"></i> axsl666-2023秋第二阶段总结
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+        </div>
+        
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rcore-os Group</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

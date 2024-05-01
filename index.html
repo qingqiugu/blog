@@ -1,0 +1,2183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+  
+  <link rel="stylesheet" href="/blog/lib/animate-css/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rcore-os.github.io","root":"/blog/","scheme":"Muse","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="rcore-os Blog">
+<meta property="og:url" content="http://rcore-os.github.io/blog/index.html">
+<meta property="og:site_name" content="rcore-os Blog">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="rcore-os Group">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://rcore-os.github.io/blog/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'en'
+  };
+</script>
+
+  <title>rcore-os Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <main class="main">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">rcore-os Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rcore-os Group</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">362</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">374</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </header>
+
+      
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+      <div class="main-inner">
+        
+
+        <div class="content index posts-expand">
+          
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://rcore-os.github.io/blog/2024/05/02/2024%20%E6%98%A5%E5%A4%8F%E5%AD%A3%E5%BC%80%E6%BA%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%AD%E7%BB%83%E8%90%A5%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93-%E9%82%B9%E8%8D%87%E6%B1%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="rcore-os Group">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rcore-os Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2024/05/02/2024%20%E6%98%A5%E5%A4%8F%E5%AD%A3%E5%BC%80%E6%BA%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%AD%E7%BB%83%E8%90%A5%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93-%E9%82%B9%E8%8D%87%E6%B1%9F/" class="post-title-link" itemprop="url"><2024春季开源操作系统训练营第一阶段总结-邹荇江></a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-05-02 00:34:19" itemprop="dateCreated datePublished" datetime="2024-05-02T00:34:19+00:00">2024-05-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-01 16:59:02" itemprop="dateModified" datetime="2024-05-01T16:59:02+00:00">2024-05-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>安装</p>
+<ol>
+<li>安装 WSL2<br>● 搜索开发者选项并打开，从控制面板-程序-启动或关闭Windows功能打开 适用于Linux的Windows子系统：<a href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi" target="_blank" rel="noopener">https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi</a><br>● 下载并安装适用于 x64 计算机的 WSL2 Linux 内核更新包<br>● 启用“虚拟机平台”可选功能：管理员打开 PowerShell 并运行：dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart<br>● 将 WSL2 设置为默认版本：继续运行 wsl –set-default-version 2<br>● 下载安装 Ubuntu 22.04 并按步骤设置账户与密码</li>
+<li>安装 WSL2 下的 Rust 与 Git<br>● 更新包列表：打开 Ubuntu，输入 sudo apt update<br>● 安装依赖项：输入 sudo apt install curl build-essential<br>● 安装 Rust：输入 curl –proto ‘=https’ –tlsv1.2 -sSf <a href="https://sh.rustup.rs" target="_blank" rel="noopener">https://sh.rustup.rs</a> | sh<br>● 安装 Git：输入  sudo apt install git</li>
+<li>使用 SSH 密钥克隆仓库至本地<br>● 使用命令新的SSH密钥：ssh-keygen -t rsa -b 4096 -C “<a href="mailto:your_email@example.com">your_email@example.com</a>“<br>● 使用cat命令查看公钥 id_rsa.pub 文件内容：cat ~/.ssh/id_rsa.pub<br>● 在 github 中输入 SSH 内容<br>● 使用SSH协议克隆仓库：git clone <a href="mailto:git@github.com">git@github.com</a>:LearningOS/rust-rustlings-2024-spring-“xxx”.git<br>● 进入仓库目录：cd rust-rustlings-2024-spring-“xxx”<br>● 安装rustlings：cargo install –force –path .</li>
+<li>使用 VS Code 练习<br>● 点击左下角远程主机，连接后在上方搜索框内找到本地 rust-rustlings-2024-spring-“xxx” 打开</li>
+<li>新建 Rust 项目<br>● 打开 Ubuntu 新建 Rust 文件夹：mkdir “Rust”<br>● 移动到 Rust：cd Rust<br>● 安装 Rand 库：在VS code打开Cargo.toml，在最后一行输入 rand = “0.8.5”<br>● 建立新文件 cargo 目录：cargo new guessing_game<br>● 移动：cd new guessing_game<br>● 退回上一级文件夹：cd ..</li>
+<li>Git 提交<br>● 设置全局仓库邮箱：git config –global user.email “xxx.com”<br>● 设置全局仓库用户名：git config –global user.name “xxx”<br>● 提交缓存区：git add .<br>● 将缓存区内容提交到本地仓库：git commit -m “update”<br>● 将本地仓库内容提交到远程仓库：git push</li>
+<li>发布 Blog<br>● 登录 github 打开 rcore-os/blog 仓库，右上角 fork 后，克隆仓库至本地：git clone <a href="mailto:git@github.com">git@github.com</a>:xxx/blog.git<br>● 添加NodeSource 的仓库：进入Ubuntu，curl -sL <a href="https://deb.nodesource.com/setup_current.x" target="_blank" rel="noopener">https://deb.nodesource.com/setup_current.x</a> | sudo -E bash -<br>● 更新包列表：sudo apt-get update<br>● 安装node.js：输入 sudo apt-get install nodejs，安装完成后输入 node -v 与 npm -v 检查（注意如果没添加 NodeSource 仓库，安装版本太老，且版本不兼容，需卸载后安装）<br>● 安装 Hexo：sudo npm install -g hexo-cli<br>● 进入 blog 文件夹并安装相应包：cd blog；npm install hexo –save<br>● 创建新博客：hexo n “&lt;2024春季开源操作系统训练营第一阶段总结-xxx&gt;”</li>
+</ol>
+<p>rustlings<br>intro<br>intro2<br>fn main() {<br>    let world=”World”;<br>    println!(“Hello {world}!”);<br>}<br>variables<br>variables1<br>变量使用前需要初始化<br>fn main() {<br>    let x = 5;<br>    println!(“x has the value {}”, x);<br>}<br>variables2<br>变量使用前需要绑定值<br>fn main() {<br>    let x=1;<br>    if x == 10 {<br>        println!(“x is ten!”);<br>    } else {<br>        println!(“x is not ten!”);<br>    }<br>}<br>variables3<br>同上<br>fn main() {<br>    let x: i32 =0;<br>    println!(“Number {}”, x);<br>}<br>variables4<br>对于可变变量初始化时，需要添加 mut 使其可变<br>fn main() {<br>    let mut x = 3;<br>    println!(“Number {}”, x);<br>    x = 5; // don’t change this line<br>    println!(“Number {}”, x);<br>}<br>variables5<br>对于变量再次利用时，需要将变量重新初始化<br>fn main() {<br>    let number = “T-H-R-E-E”; // don’t change this line<br>    println!(“Spell a Number : {}”, number);<br>    let number = 3; // don’t rename this variable<br>    println!(“Number plus two is : {}”, number + 2);<br>}<br>variables6<br>对于 const 常量定义：const+全大写变量名+变量类型<br>const NUMBER:i32 = 3;<br>fn main() {<br>    println!(“Number {}”, NUMBER);<br>}<br>fuctions<br>fuctions1<br>函数使用前声明<br>fn call_me(){}<br>fn main() {<br>    call_me();<br>}</p>
+<p>fuctions2<br>对于函数形参必须指定参数类型<br>n main() {<br>    call_me(3);<br>}</p>
+<p>fn call_me(num:i32) {<br>    for i in 0..num {<br>        println!(“Ring! Call number {}”, i + 1);<br>    }<br>}</p>
+<p>fuctions3<br>函数实参与形参不匹配，需补上实参<br>fn main() {<br>    call_me(3);<br>}</p>
+<p>fn call_me(num: u32) {<br>    for i in 0..num {<br>        println!(“Ring! Call number {}”, i + 1);<br>    }<br>}<br>fuctions4<br>返回值需要指定数据类型<br>fn main() {<br>    let original_price = 51;<br>    println!(“Your sale price is {}”, sale_price(original_price));<br>}</p>
+<p>fn sale_price(price: i32) -&gt; i32{<br>    if is_even(price) {<br>        price - 10<br>    } else {<br>        price - 3<br>    }<br>}</p>
+<p>fn is_even(num: i32) -&gt; bool {<br>    num % 2 == 0<br>}<br>fuctions5<br>区分表达式与语句，返回值是语句故而不能有分机<br>fn main() {<br>    let answer = square(3);<br>    println!(“The square of 3 is {}”, answer);<br>}</p>
+<p>fn square(num: i32) -&gt; i32 {<br>    num * num<br>}</p>
+<p>if<br>if1<br>输出最大数；if 声明部分不需要加括号<br>pub fn bigger(a: i32, b: i32) -&gt; i32 {<br>    // Complete this function to return the bigger number!<br>    // Do not use:<br>    // - another function call<br>    // - additional variables<br>    if a&gt;b<br>    {a}<br>    else<br>    {b}<br>}<br>if2<br>按测试填补<br>pub fn foo_if_fizz(fizzish: &amp;str) -&gt; &amp;str {<br>    if fizzish == “fizz” {<br>        “foo”<br>    } else if fizzish == “fuzz” {<br>            “bar”<br>        } else {<br>            “baz”<br>    }<br>}<br>if3<br>变量不应被赋予不同类型<br>pub fn animal_habitat(animal: &amp;str) -&gt; &amp;’static str {<br>    let identifier = if animal == “crab” {<br>        1<br>    } else if animal == “gopher” {<br>        2<br>    } else if animal == “snake” {<br>        3<br>    } else {<br>        4<br>    };</p>
+<pre><code>// DO NOT CHANGE THIS STATEMENT BELOW
+let habitat = if identifier == 1 {
+    &quot;Beach&quot;
+} else if identifier == 2 {
+    &quot;Burrow&quot;
+} else if identifier == 3 {
+    &quot;Desert&quot;
+} else {
+    &quot;Unknown&quot;
+};
+
+habitat</code></pre><p>}<br>quiz<br>quiz1<br>fn calculate_price_of_apples(num:i32) -&gt;i32 {<br>    if num&gt;40{<br>        num<br>    }<br>    else {<br>        num*2<br>    }<br>}<br>quiz2<br>quiz3<br>primitive_types<br>primitive_types1<br>变量初始化<br>fn main() {<br>    // Booleans (<code>bool</code>)</p>
+<pre><code>let is_morning = true;
+if is_morning {
+    println!(&quot;Good morning!&quot;);
+}
+
+let is_evening = false;
+// Finish the rest of this line like the example! Or make it be false!
+if is_evening {
+    println!(&quot;Good evening!&quot;);
+}</code></pre><p>}<br>primitive_types2<br>变量初始化，单引号表示字符字面量，比如 ‘a’ 表示字符 a<br>fn main() {<br>    // Characters (<code>char</code>)</p>
+<pre><code>// Note the _single_ quotes, these are different from the double quotes
+// you&apos;ve been seeing around.
+let my_first_initial = &apos;C&apos;;
+if my_first_initial.is_alphabetic() {
+    println!(&quot;Alphabetical!&quot;);
+} else if my_first_initial.is_numeric() {
+    println!(&quot;Numerical!&quot;);
+} else {
+    println!(&quot;Neither alphabetic nor numeric!&quot;);
+}
+
+let your_character = &apos;5&apos;;
+// Finish this line like the example! What&apos;s your favorite character?
+// Try a letter, try a number, try a special character, try a character
+// from a different language than your own, try an emoji!
+if your_character.is_alphabetic() {
+    println!(&quot;Alphabetical!&quot;);
+} else if your_character.is_numeric() {
+    println!(&quot;Numerical!&quot;);
+} else {
+    println!(&quot;Neither alphabetic nor numeric!&quot;);
+}</code></pre><p>}</p>
+<p>primitive_types3<br>定义数组<br>fn main() {<br>    let a = [2;100];</p>
+<pre><code>if a.len() &gt;= 100 {
+    println!(&quot;Wow, that&apos;s a big array!&quot;);
+} else {
+    println!(&quot;Meh, I eat arrays like that for breakfast.&quot;);
+}</code></pre><p>}<br>primitive_types4<br>数组切片，前闭后开<br>fn slice_out_of_array() {<br>    let a = [1, 2, 3, 4, 5];</p>
+<pre><code>let nice_slice = &amp;a[1..4];
+
+assert_eq!([2, 3, 4], nice_slice)</code></pre><p>}<br>primitive_types5<br>元组类型<br>fn main() {<br>    let cat = (“Furry McFurson”, 3.5);<br>    let (name, age) = cat;/* your pattern here */</p>
+<pre><code>println!(&quot;{} is {} years old.&quot;, name, age);</code></pre><p>}<br>primitive_types6<br>元组数据的索引访问<br>fn indexing_tuple() {<br>    let numbers = (1, 2, 3);<br>    // Replace below ??? with the tuple indexing syntax.<br>    let second = numbers.1;</p>
+<pre><code>assert_eq!(2, second,
+    &quot;This is not the 2nd number in the tuple!&quot;)</code></pre><p>}<br>vecs<br>vecs1<br>初始化vector，<br>fn array_and_vec() -&gt; ([i32; 4], Vec<i32>) {<br>    let a = [10, 20, 30, 40]; // a plain array<br>    let v = vec![10, 20, 30, 40];<br>    // TODO: declare your vector here with the macro for vectors</i32></p>
+<pre><code>(a, v)</code></pre><p>}<br>vecs2</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://rcore-os.github.io/blog/2024/05/01/axsl666-2023%E7%A7%8B%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="rcore-os Group">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rcore-os Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2024/05/01/axsl666-2023%E7%A7%8B%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">axsl666-2023秋第二阶段总结</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-05-01 16:59:02" itemprop="dateCreated datePublished" datetime="2024-05-01T16:59:02+00:00">2024-05-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Axsl666-2023秋季OS训练营第二阶段总结"><a href="#Axsl666-2023秋季OS训练营第二阶段总结" class="headerlink" title="Axsl666-2023秋季OS训练营第二阶段总结"></a>Axsl666-2023秋季OS训练营第二阶段总结</h1><p>首先感谢learningOS社区的所有贡献者。前几次训练营因为错过报名时间而未能参加，终于在2023秋季参与到了本次训练营活动。</p>
+<h2 id="实验一内容总结"><a href="#实验一内容总结" class="headerlink" title="实验一内容总结"></a>实验一内容总结</h2><p>多任务系统的简单实现</p>
+<ul>
+<li>扩展 <code>TaskControlBlock</code>：<ul>
+<li><code>start_time</code></li>
+<li><code>started</code></li>
+<li><code>syscall_times</code></li>
+</ul>
+</li>
+<li>设计 <code>TaskManager</code> 的公共接口<ul>
+<li><code>add_syscall_times</code></li>
+<li><code>get_current_task_info</code></li>
+</ul>
+</li>
+<li>在相应函数中更新 TCB 数据, 记录开始时间：<ul>
+<li><code>run_first_task</code></li>
+<li><code>run_next_task</code></li>
+</ul>
+</li>
+<li>在系统调用处理函数中调用 <code>add_syscall_times</code> 更新 TCB 中的记录</li>
+<li>完成 <code>sys_task_info</code> 系统调用<ul>
+<li>主要是调用 <code>get_current_task_info</code> 并返回 <code>TaskInfo</code>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="实验二内容总结"><a href="#实验二内容总结" class="headerlink" title="实验二内容总结"></a>实验二内容总结</h2><p>系统开启虚拟地址空间</p>
+<h3 id="重写-sys-get-time-和-sys-task-info"><a href="#重写-sys-get-time-和-sys-task-info" class="headerlink" title="重写 sys_get_time 和 sys_task_info"></a>重写 sys_get_time 和 sys_task_info</h3><ul>
+<li>在内存管理中增加 translated_mut_ptr 函数，实现进程用户地址空间中的指针到可变引用的转换</li>
+<li>其余类似 ch3 中的操作</li>
+</ul>
+<h3 id="mmap-和-munmap-匿名映射"><a href="#mmap-和-munmap-匿名映射" class="headerlink" title="mmap 和 munmap 匿名映射"></a>mmap 和 munmap 匿名映射</h3><ul>
+<li>内存管理接口<ul>
+<li>delete_frame_area</li>
+</ul>
+</li>
+<li>任务管理接口<ul>
+<li>mmap：调用insert_framed_area增加映射区域</li>
+<li>munmap：调用delete_frame_area删除映射区域</li>
+</ul>
+</li>
+<li>系统调用的实现<ul>
+<li>合法性检验</li>
+<li>调用任务管理接口 mmap 和 munmap</li>
+</ul>
+</li>
+</ul>
+<h2 id="实验三内容总结"><a href="#实验三内容总结" class="headerlink" title="实验三内容总结"></a>实验三内容总结</h2><p>实现进程管理相关系统调用</p>
+<h3 id="实现系统调用-spawn"><a href="#实现系统调用-spawn" class="headerlink" title="实现系统调用 spawn"></a>实现系统调用 spawn</h3><ul>
+<li>扩展 Task 公共接口<ul>
+<li>spawn<ul>
+<li>MemorySet::from_elf 新建地址空间，用户栈，程序入口点</li>
+<li>分配 pid 与内核栈</li>
+<li>建立 TCB</li>
+<li>加入父进程的子进程链表</li>
+<li>准备 TrapContext</li>
+<li>返回新子进程的TCB</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>完成系统调用功能<ul>
+<li>sys_spawn</li>
+</ul>
+</li>
+</ul>
+<h3 id="实现-stride-调度算法"><a href="#实现-stride-调度算法" class="headerlink" title="实现 stride 调度算法"></a>实现 stride 调度算法</h3><ul>
+<li>扩展 TCB<ul>
+<li>stride</li>
+<li>priority</li>
+</ul>
+</li>
+<li>扩展 Task 公共接口<ul>
+<li>set_priority</li>
+</ul>
+</li>
+<li>修改 TaskManager 调度算法<ul>
+<li>fetch 修改为 stride 调度算法</li>
+</ul>
+</li>
+<li>完成系统调用功能<ul>
+<li>sys_set_priority 调用 set_priority</li>
+</ul>
+</li>
+</ul>
+<h2 id="实验四内容总结"><a href="#实验四内容总结" class="headerlink" title="实验四内容总结"></a>实验四内容总结</h2><p>实现几个文件系统相关系统调用</p>
+<h3 id="sys-linkat"><a href="#sys-linkat" class="headerlink" title="sys_linkat"></a>sys_linkat</h3><ul>
+<li>给 File trait 增加 fstat 接口</li>
+<li>扩展 efs 中 DiskInode 接口<ul>
+<li>get_inode_id： get_disk_inode_pos的逆过程</li>
+</ul>
+</li>
+<li>在 vfs 中 Inode 增加接口<ul>
+<li>create_link<ul>
+<li>新建目录项，(new_name, old_inode_id)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>完成系统调用 sys_linkat</li>
+</ul>
+<h3 id="sys-unlinkat"><a href="#sys-unlinkat" class="headerlink" title="sys_unlinkat"></a>sys_unlinkat</h3><ul>
+<li>给 File trait 增加 fstat 接口</li>
+<li>扩展 efs 中 DiskInode 接口<ul>
+<li>get_inode_id： get_disk_inode_pos的逆过程</li>
+</ul>
+</li>
+<li>在 vfs 中 Inode 增加接口<ul>
+<li>delete_link<ul>
+<li>遍历目录下所有目录项，找到与对应文件名相同的inode</li>
+<li>删除（清空）对应目录项</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>完成系统调用 sys_unlinkat</li>
+</ul>
+<h3 id="sys-stat"><a href="#sys-stat" class="headerlink" title="sys_stat"></a>sys_stat</h3><ul>
+<li>给 File trait 增加 fstat 接口</li>
+<li>扩展 efs 中 DiskInode 接口<ul>
+<li>get_inode_id： get_disk_inode_pos的逆过程</li>
+</ul>
+</li>
+<li>在 vfs 中 Inode 增加接口<ul>
+<li>inode_id: 实现获取自身 inode id</li>
+<li>isdir：判读是 inode 否为目录</li>
+<li>linknum: 获取 root inode 下的某一个 inode id 对应的硬链接数量</li>
+</ul>
+</li>
+<li>完成系统调用 sys_stat</li>
+</ul>
+<h2 id="实验五内容总结"><a href="#实验五内容总结" class="headerlink" title="实验五内容总结"></a>实验五内容总结</h2><p>本节主要几种同步原语与及其内核实现。</p>
+<ul>
+<li>加入死锁检测机制，实现银行家算法。</li>
+<li>扩展 PCB 和 TCB<ul>
+<li>可利用资源向量 分配矩阵 需求矩阵</li>
+</ul>
+</li>
+<li>数据更新<ul>
+<li>相关系统调用时进行更新数据</li>
+</ul>
+</li>
+<li>检测算法<ul>
+<li>获取资源前进行死锁检测</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://rcore-os.github.io/blog/2024/05/01/2024%E6%98%A5%E5%BC%80%E6%BA%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%AD%E7%BB%83%E8%90%A5%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93%E6%8A%A5%E5%91%8A-jinchaofs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="rcore-os Group">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rcore-os Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2024/05/01/2024%E6%98%A5%E5%BC%80%E6%BA%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%AD%E7%BB%83%E8%90%A5%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93%E6%8A%A5%E5%91%8A-jinchaofs/" class="post-title-link" itemprop="url">2024春开源操作系统训练营第一阶段总结报告-jinchaofs</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-05-01 16:59:02" itemprop="dateCreated datePublished" datetime="2024-05-01T16:59:02+00:00">2024-05-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Rustlings-练习总结"><a href="#Rustlings-练习总结" class="headerlink" title="Rustlings 练习总结"></a>Rustlings 练习总结</h1><p>作为一名前端全栈开发者，刚开始学习Rust时，给我的感觉是没想象中的难度那么高，学起来还挺轻松…<br>然而，还是太年轻了，当我开始真的用起来之后，我发现，编译器成为了我前进的“恶梦”，它无时无刻不在教我做人，总是会在不经意间鞭挞我：“你，还很菜呢！”<br>所以，慢慢的，我开始放弃了保守的学习方式：“先将文档中的内容都大致学会，并记下来”，它让我一直停留在学习的舒适区，对学习Rust来说是很低效的。<br>Rustlings 其实就是一种很好的学习语言的方式，通过大量的几乎全覆盖式的Rust练习，在练习中不断遇到问题，并解决问题，就像打怪升级，心理上会不断的得到激励感，并不断的做下去。<br>通过Rustlings的110道题目的练习，其实也让我意识到了，自己以为的会使用Rust了，只是井底之蛙吧了。<br>练习的内容虽然都在文档中，只看文档学习的化，其实有时候会忽略这些知识的真实用途是什么，也就无法在实际项目中灵活的去使用了。<br>通过这段时间的练习，不一定让我在Rust的熟练成都有很大的提升，但是让我看到了一个Rust用法的大纲，这已经是一个很好的开始了。<br>希望在接下来的开发里，不断精进对Rust使用，当然，也不能只专注在语法本身，对操作系统本身知识的学习，会更重要，非常期待！   </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://rcore-os.github.io/blog/2024/05/01/2024%E6%98%A5%E5%A4%8F%E5%AD%A3%E5%BC%80%E6%BA%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%AD%E7%BB%83%E8%90%A5%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93%E6%8A%A5%E5%91%8A-fengtdi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="rcore-os Group">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rcore-os Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2024/05/01/2024%E6%98%A5%E5%A4%8F%E5%AD%A3%E5%BC%80%E6%BA%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%AD%E7%BB%83%E8%90%A5%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93%E6%8A%A5%E5%91%8A-fengtdi/" class="post-title-link" itemprop="url">2024春夏季开源操作系统训练营第一阶段总结报告-fengtdi</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-05-01 16:59:02" itemprop="dateCreated datePublished" datetime="2024-05-01T16:59:02+00:00">2024-05-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<p>title: 2024春夏季开源操作系统训练营第一阶段总结报告-fengtdi<br>date: 2024-04-24 21:38:58<br>tags:<br>    - author:zlh20040308</p>
+<hr>
+<h1 id="2024春夏季开源操作系统训练营第一阶段总结报告"><a href="#2024春夏季开源操作系统训练营第一阶段总结报告" class="headerlink" title="2024春夏季开源操作系统训练营第一阶段总结报告"></a>2024春夏季开源操作系统训练营第一阶段总结报告</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>了解到这个训练营源自一次机缘巧合，刚学完操作系统的鄙人在b站刷课时无意刷到了前训练营的导学部分，并在评论区看到了up主留下的链接，点进去一看正好都是我很感兴趣的方向，而且学习资源和github页面都整理得很完善，于是果断加入了  </p>
+<h2 id="Rust编程基础"><a href="#Rust编程基础" class="headerlink" title="Rust编程基础"></a>Rust编程基础</h2><h3 id="初探"><a href="#初探" class="headerlink" title="初探"></a>初探</h3><p>第一阶段的的主要任务是学习Rust语言，刚接触这门语言时候的第一感觉就是概念十分的多，有些概念甚至看起来匪夷所思，如生命周期标注，我十分不理解为什么Rust要这么设计，但是秉持着能跑就行的原则，还是硬着头皮和编译器作斗争  </p>
+<h3 id="初窥门径"><a href="#初窥门径" class="headerlink" title="初窥门径"></a>初窥门径</h3><p>带着以上这些问题，我找到了斯坦福大学CS110L这门课，这门课并不是教学生如何进行Rust编程，而是希望通过Rust的视角反映出当今两种主流内存分配机制——手动管理（malloc&amp;free）和垃圾回收（GC）——的不足，在其三节课就主要讨论了它们所会遇到的问题：  </p>
+<ul>
+<li><p>手动管理（C/C++）  </p>
+<p>  C/C++的类型系统对内存所有权的表达能力是十分有限的，以至于工程师在设计函数接口时会显得十分臃肿，还必须附上大量的注释来告知调用者去担负起管理内存的责任，也就是说内存的管理取决于程序员的自觉性，这就导致程序员经常会忘记之前申请过释放内存，而且随着工程的不断壮大，这种错误会不可避免地发生  </p>
+</li>
+<li><p>垃圾回收（Java）  </p>
+<p>  Java通过某种类似于引用计数的方式来自动回收内存，但这种设计会带来性能上的损耗（回收机制过于复杂）  </p>
+</li>
+</ul>
+<p>而Rust便带来了属于它的第三种方案，那就是<strong>所有权机制</strong>，在这种机制下，内存管理会变得高效且安全，这得益于它强大的静态检测机制，能够在编译时期就规避掉很多内存泄露的隐患  </p>
+<p>但这也是有代价的，既然要求在编译时期就能发现错误，那么Rust编译器就会要求程序员在编码时附带足够多的信息供它推断，也就出现了类似于生命周期标注这些语法  </p>
+<h3 id="牛刀小试"><a href="#牛刀小试" class="headerlink" title="牛刀小试"></a>牛刀小试</h3><p>在初步过完几轮Rust基础并完成了rustlings之后，便开始着手用Rust复刻了一些之前写过的小项目（当然，还有那令Rust新手望而生畏的链表），在这段过程中越发能感受到Rust的一些设计理念在影响着我的编码习惯，也引起了我对与内存安全的思考  </p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在经历了这一阶段的学习后，虽然我到现在也不认为我是一个Rust程序员，但是也多多少少能用Rust去进行一些有效编码了  </p>
+<p>十分感谢第一阶段中为我答疑解惑的老师和同学，同时更要感谢开源操作系统训练营提供了这么一个平台把大家聚集在了一起，我十分喜欢这里的学习氛围，大家一起交流着学习上的疑惑并提出自己的见解，这开源的理念也使我收益颇丰</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://rcore-os.github.io/blog/2024/05/01/2024Pengda/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="rcore-os Group">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rcore-os Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2024/05/01/2024Pengda/" class="post-title-link" itemprop="url">2024Pengda</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-05-01 16:59:02" itemprop="dateCreated datePublished" datetime="2024-05-01T16:59:02+00:00">2024-05-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第一阶段练习总结"><a href="#第一阶段练习总结" class="headerlink" title="第一阶段练习总结"></a>第一阶段练习总结</h1><p>作为一名Cpper，我之前对Rust的了解可以说是毫无了解，这次受到朋友的邀请，第一次接触Rust，刚开始以为就是像C一样的过程语言。然而，当我真正开始深入学习和使用Rust时，我发现它远比我预想的要有趣和富有挑战性。特别是在进行Rustlings练习的过程中，我收获颇丰，也深刻体会到了Rust语言的强大和魅力。</p>
+<p>Rustlings是一个设计精良的Rust语言练习项目，通过一系列由简到难的练习题，帮助开发者逐步掌握Rust的语法和特性。在练习的过程中，我遇到了许多看似简单但实则深奥的问题，这些问题让我不断思考和探索，也让我对Rust有了更深入的理解。</p>
+<p>通过Rustlings的练习，我只能感叹面向编译器编程的魅力。</p>
+<p>此外，Rustlings的练习还让我认识到了自己在编程思维方面的不足总的来说，Rustlings练习是我学习Rust过程中的一个重要环节。它不仅让我掌握了Rust的基本语法和特性，还锻炼了我的编程思维和解决问题的能力。我相信，在未来的学习和工作中，我会继续利用Rustlings等资源来深化对Rust的理解和应用，并不断提升自己的编程水平。同时，我也期待在未来的项目中能够充分发挥Rust的优势，写出更加健壮、高效的程序。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://rcore-os.github.io/blog/2024/05/01/2023%E5%BC%80%E6%BA%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%AD%E7%BB%83%E8%90%A5%E6%80%BB%E7%BB%93%E6%8A%A5%E5%91%8A-%E5%91%A8%E7%9D%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="rcore-os Group">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rcore-os Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2024/05/01/2023%E5%BC%80%E6%BA%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%AD%E7%BB%83%E8%90%A5%E6%80%BB%E7%BB%93%E6%8A%A5%E5%91%8A-%E5%91%A8%E7%9D%BF/" class="post-title-link" itemprop="url">2023开源操作系统训练营总结报告-周睿</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-05-01 16:59:02" itemprop="dateCreated datePublished" datetime="2024-05-01T16:59:02+00:00">2024-05-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>首先感谢各位老师以及同学提供的如此丰富的Rust与操作系统相关的学习资料，令本人受益匪浅，下面是本次训练营的总结报告。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2024/05/01/2023%E5%BC%80%E6%BA%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%AD%E7%BB%83%E8%90%A5%E6%80%BB%E7%BB%93%E6%8A%A5%E5%91%8A-%E5%91%A8%E7%9D%BF/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://rcore-os.github.io/blog/2024/04/30/yjymosheng/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="rcore-os Group">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rcore-os Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2024/04/30/yjymosheng/" class="post-title-link" itemprop="url">yjymosheng</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-04-30 01:44:25" itemprop="dateCreated datePublished" datetime="2024-04-30T01:44:25+00:00">2024-04-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-01 16:59:02" itemprop="dateModified" datetime="2024-05-01T16:59:02+00:00">2024-05-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="初次认真学习rust每一个点"><a href="#初次认真学习rust每一个点" class="headerlink" title="初次认真学习rust每一个点"></a>初次认真学习rust每一个点</h2><p>通过某些渠道，第一次了解到操作系统训练营，以前我也有用rust写过一些内容，但严格来说这是我的第一次正式学习rust。学习了很多的内容，了解到了闭包，函数式编程，拓展了我的知识面，我第一次见到结构如此清晰的语言。</p>
+<h2 id="所有权的理解"><a href="#所有权的理解" class="headerlink" title="所有权的理解"></a>所有权的理解</h2><p>众所周知，rust很贪。所有权是其中的灵魂。我认为，其本质就是“作茧自缚”，减少了许多东西，又为方便开发与调试添加了许多东西。这些设计减少了许多的错误。所以简单的把所有权当作单线程的脑子就行，不要给它过多的行为。</p>
+<h2 id="错误处理中的Option-Result"><a href="#错误处理中的Option-Result" class="headerlink" title="错误处理中的Option Result"></a>错误处理中的Option Result</h2><ul>
+<li><p>Option 用于表达可能存在或者不存在的值，它有两种可能的状态：Some(值) 和 None。当你不确定一个值是否存在时，可以使用 Option 来处理这种情况。</p>
+</li>
+<li><p>Result 则用于表达可能的操作成功或失败的结果，它有两种可能的状态：Ok(值) 和 Err(错误)。当你需要处理可能出现错误的情况时，可以使用 Result 来处理这种情况。</p>
+</li>
+</ul>
+<h2 id="令人耳目一新的枚举类型-match"><a href="#令人耳目一新的枚举类型-match" class="headerlink" title="令人耳目一新的枚举类型 match"></a>令人耳目一新的枚举类型 match</h2><p>在 Rust 中，枚举类型是一种非常强大的数据结构，它可以用来表达一组相关的值。而使用 match 关键字可以让我们更加灵活地处理枚举类型的值，使得代码更加清晰易懂。</p>
+<p>match 表达式可以用来匹配枚举类型的不同变体，并根据不同的情况执行相应的代码逻辑。这种模式匹配的方式让代码的逻辑结构清晰明了，同时也增强了代码的可读性和可维护性。</p>
+<h2 id="我的收获"><a href="#我的收获" class="headerlink" title="我的收获"></a>我的收获</h2><p>通过学习 Rust，我收获了很多。不仅仅是语言本身的特性和语法，更重要的是 Rust 给我带来的编程思维方式的转变。在学习 Rust 的过程中，我更加注重代码的安全性和可靠性，学会了如何利用 Rust 的各种特性来编写更加健壮的程序。</p>
+<p>另外，通过与社区的交流和分享，我还了解到了很多其他开发者的经验和见解，这也让我受益匪浅。总的来说，学习 Rust 是一次非常有意义的经历，我相信在将来的工作和项目中，我会继续运用 Rust 的知识和思想，为我的编程生涯注入新的活力和动力。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://rcore-os.github.io/blog/2024/04/29/2024%E6%98%A5%E5%A4%8F%E5%AD%A3%E5%BC%80%E6%BA%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%AD%E7%BB%83%E8%90%A5%E4%B8%80%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93-ChaosKraken/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="rcore-os Group">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rcore-os Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2024/04/29/2024%E6%98%A5%E5%A4%8F%E5%AD%A3%E5%BC%80%E6%BA%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%AD%E7%BB%83%E8%90%A5%E4%B8%80%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93-ChaosKraken/" class="post-title-link" itemprop="url">2024春夏季开源操作系统训练营一阶段总结-ChaosKraken</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-04-29 23:56:26" itemprop="dateCreated datePublished" datetime="2024-04-29T23:56:26+00:00">2024-04-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-01 16:59:02" itemprop="dateModified" datetime="2024-05-01T16:59:02+00:00">2024-05-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/2024%E6%98%A5%E5%A4%8F%E5%AD%A3%E5%BC%80%E6%BA%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%AD%E7%BB%83%E8%90%A5/" itemprop="url" rel="index"><span itemprop="name">2024春夏季开源操作系统训练营</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第一阶段学习总结"><a href="#第一阶段学习总结" class="headerlink" title="第一阶段学习总结"></a>第一阶段学习总结</h1><p>作为一名Cpper，学习Rust的过程属实有点难受，在使用习惯上存在很大的差别，往常习惯的写法在Rust中都不能满足语言规范。</p>
+<p>通过学习之后我也体会到Rust的优秀之处：抛弃手动管理和GC，用更“高效”的所有权机制来处理引用。</p>
+<p>不过这也天生的给Rust带来了一些劣势：所有权机制本质上是谁管理谁的问题，但是一个链表中的所有节点都是 peers 是平等的，前一个节点牺牲了不会影响后面的节点；所有权机制必然导致数据存在“从属”关系，这让链表的表示比较困难，必须使用一些unsafe代码</p>
+<p>另外也算是认识了一下函数式编程的魅力，Rust提供了大量操作的抽象，熟练的运用后能很好的节省代码量（当然随之而来的是对我心智负担的增加）</p>
+<p>后续我会继续学习，整理一下常用函数，让使用更加流畅</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://rcore-os.github.io/blog/2024/04/29/Learning-OS-2024-Spring-Phase-1-Final-Report-Blog-From-Zhangzw999/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="rcore-os Group">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rcore-os Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2024/04/29/Learning-OS-2024-Spring-Phase-1-Final-Report-Blog-From-Zhangzw999/" class="post-title-link" itemprop="url">Learning OS 2024-Spring Phase 1: Final Report Blog - From Zhangzw999</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-04-29 22:42:36" itemprop="dateCreated datePublished" datetime="2024-04-29T22:42:36+00:00">2024-04-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-01 16:59:02" itemprop="dateModified" datetime="2024-05-01T16:59:02+00:00">2024-05-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="2024春夏季开源操作系统训练营-第一阶段总结"><a href="#2024春夏季开源操作系统训练营-第一阶段总结" class="headerlink" title="2024春夏季开源操作系统训练营 - 第一阶段总结"></a>2024春夏季开源操作系统训练营 - 第一阶段总结</h1><h2 id="作者：Zhangzw999"><a href="#作者：Zhangzw999" class="headerlink" title="作者：Zhangzw999"></a>作者：Zhangzw999</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>笔者初二开始接触编程，当时还只会写一点 C 和 Python，后来上了初三，遇见疫情，在家无聊，出于兴趣开始捣鼓一些复杂点的项目，但始终没有接触到本质的东西。这次的训练营是个好机会，不仅能让我深入接触到一门编程语言的工作方式，还能让我借此增进对操作系统原理的了解。作为一名电子信息类专业的大一学生，我明白自己的时间和能力都极其有限，但我仍然愿意为了自己的兴趣，也为了将来工作多一份可能的机会，来参加开源操作系统训练营。我相信这次经历会成为我的一段难忘的回忆。</p>
+<hr>
+<h3 id="第一阶段：110-道-Rust-题目的摸爬滚打"><a href="#第一阶段：110-道-Rust-题目的摸爬滚打" class="headerlink" title="第一阶段：110 道 Rust 题目的摸爬滚打"></a>第一阶段：110 道 Rust 题目的摸爬滚打</h3><hr>
+<h4 id="变量-Variables"><a href="#变量-Variables" class="headerlink" title="变量 Variables"></a>变量 Variables</h4><ul>
+<li><p>变量篇简简单单就过去了，区别就是 Rust 中的可变变量要<strong>显式</strong>声明。</p>
+</li>
+<li><p>常量必须<strong>明确指定类型</strong>： <code>const a: i32 = 0</code> 。</p>
+</li>
+<li><p>可以用大括号限定变量的作用域，作用域之外的变量会被回收。</p>
+</li>
+<li><p>输出时可以直接在大括号内指定变量名，如 <code>println!(&quot;{&lt;name&gt;}&quot;);</code> 。</p>
+</li>
+<li><p>可以借助元组一次赋多个值：let (s1, s2) = (“Hello”, “World”);</p>
+</li>
+<li><p>定义有重复元素的数组：[3; 5] == [3, 3, 3, 3, 3]</p>
+</li>
+</ul>
+<hr>
+<h4 id="函数-Functions"><a href="#函数-Functions" class="headerlink" title="函数 Functions"></a>函数 Functions</h4><ul>
+<li><p>函数签名：</p>
+<pre><code>[pub] fn function_name(para: type, ...) -&gt; return_type 
+[where
+    T: ...] // 这里是对泛型实现的 Trait 要求
+{ ... }</code></pre></li>
+<li><p><code>fn</code> 的返回值一般是在函数末尾不加分号的语句，以及 <code>return ...;</code> 语句。</p>
+<ul>
+<li>注：fn 不需要像 C 一样要先有独立的函数声明，直接定义即可</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="条件控制流-Control-Flow"><a href="#条件控制流-Control-Flow" class="headerlink" title="条件控制流 Control Flow"></a>条件控制流 Control Flow</h4><hr>
+<h5 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h5><ul>
+<li><p>基本语法：</p>
+<pre><code>if [condition 1] {
+
+} else if [condition 2] {
+
+} else {
+
+}</code></pre></li>
+<li><p>当 if <strong>有返回值</strong>时（在Rust中，各个分支的最后一条语句没有分号时，将该语句的执行结果作为返回值），允许<strong>将整个 if 语句作为右值</strong>。<br>该功能对应 C 中条件运算符 <code>A ? &lt;condition&gt; : &lt;...&gt;</code> 的增强版。</p>
+</li>
+</ul>
+<hr>
+<h5 id="loop-无条件循环"><a href="#loop-无条件循环" class="headerlink" title="loop 无条件循环"></a>loop 无条件循环</h5><pre><code>loop { ... } // 无限循环</code></pre><hr>
+<h5 id="标签-Labels"><a href="#标签-Labels" class="headerlink" title="标签 Labels"></a>标签 Labels</h5><ul>
+<li><code>&#39;&lt;name&gt;:</code> 指定标签，用于跳转，可用于跳出循环，方法：<code>break &#39;&lt;name&gt;;</code> 或者 <code>continue &#39;&lt;&gt;;</code><br><strong>注意前面的单引号！</strong></li>
+</ul>
+<hr>
+<h5 id="while-条件循环"><a href="#while-条件循环" class="headerlink" title="while 条件循环"></a>while 条件循环</h5><pre><code>// 单条件循环，先判定后进入
+while &lt;Condition&gt; { ... } </code></pre><hr>
+<h5 id="for-遍历循环"><a href="#for-遍历循环" class="headerlink" title="for 遍历循环"></a>for 遍历循环</h5><pre><code>// 遍历循环
+for n in (1..4).rev() { ... } 
+// rev():反转数字序列
+// 区间表达式：([Start]..[=][End])
+// 表达式产生值，语句（带分号的）不产生值</code></pre><hr>
+<h5 id="match-语句"><a href="#match-语句" class="headerlink" title="match 语句"></a>match 语句</h5><p>（见 枚举类型 Enum）</p>
+<hr>
+<h5 id="if-let-简洁控制流"><a href="#if-let-简洁控制流" class="headerlink" title="if let 简洁控制流"></a>if let 简洁控制流</h5><p>只匹配一个模式的值</p>
+<pre><code>if let Coin::Fen = coin { … } 
+// 等号右侧的值进入语句块
+// 可以加入else处理其他情况</code></pre><hr>
+<h5 id="while-let"><a href="#while-let" class="headerlink" title="while let"></a>while let</h5><p>类似于if let，只匹配一种情况，并以此作为循环变量进入循环</p>
+<hr>
+<h4 id="内置类型-Primitive-Types"><a href="#内置类型-Primitive-Types" class="headerlink" title="内置类型 Primitive Types"></a>内置类型 Primitive Types</h4><hr>
+<h5 id="整型-Integer"><a href="#整型-Integer" class="headerlink" title="整型 Integer"></a>整型 Integer</h5><ul>
+<li>前缀：i有符号，u无符号，8-128以及isize和usize（取决于所用计算机的架构）。<br><strong>为方便阅读，定义时可以在任意位置加入任意数量的_作为阅读分隔符。</strong><br>比如 <code>0b_1000_1000_0010_0101_u16</code></li>
+</ul>
+<hr>
+<h6 id="整型溢出-Integer-Overflow"><a href="#整型溢出-Integer-Overflow" class="headerlink" title="整型溢出 Integer Overflow"></a>整型溢出 Integer Overflow</h6><ul>
+<li><p><code>--release</code>模式下编译时，不会检查整数溢出。<br>对于此，Rust有完整的应对方法：</p>
+<ol>
+<li><code>wrapping_...()</code>：回绕，溢出时返回正确结果对最大值取模</li>
+<li><code>checked_...()</code>：检查，溢出时返回None</li>
+<li><code>overflowing_...()</code>：溢出，溢出时返回：(正确结果对最大值取模，指示是否溢出的布尔值)</li>
+<li><code>saturating_...()</code>：饱和，返回最接近的范围内值，即最大或最小值</li>
+</ol>
+<ul>
+<li><code>...</code> 可以是：add, sub, mul. div, rem(Mod), neg, abs, pow, shl(&lt;&lt; 左移位), shr(&gt;&gt; 右移位)</li>
+</ul>
+</li>
+<li><p>更多资料：<a href="https://doc.rust-lang.org/stable/book/appendix-02-operators.html" target="_blank" rel="noopener">Rust 官方文档：运算符</a></p>
+</li>
+</ul>
+<hr>
+<h5 id="浮点型-Float"><a href="#浮点型-Float" class="headerlink" title="浮点型 Float"></a>浮点型 Float</h5><p>f32 和 f64。</p>
+<hr>
+<h5 id="逻辑值-Bool"><a href="#逻辑值-Bool" class="headerlink" title="逻辑值 Bool"></a>逻辑值 Bool</h5><p>true 和 false。</p>
+<hr>
+<h5 id="单字符-char"><a href="#单字符-char" class="headerlink" title="单字符 char"></a>单字符 char</h5><ul>
+<li><p>Rust 中存储的字符类型为 <strong>Unicode</strong>，范围是 <code>U+0000 - U+D7FF, U+E000 - U+10FFFF</code>。</p>
+</li>
+<li><p><strong>注意</strong>：Rust 会将中文字符视作 “Alphabetic”（字母），处理时需特别留意。</p>
+</li>
+<li><p><code>b&#39;A&#39;</code>：这种情况下是ASCII，仅u8。</p>
+</li>
+</ul>
+<hr>
+<h5 id="数组-Array"><a href="#数组-Array" class="headerlink" title="数组 Array"></a>数组 Array</h5><pre><code>let a = [1, 2, 4, 3, 5]; // 字面量</code></pre><hr>
+<h5 id="数组切片-Slice"><a href="#数组切片-Slice" class="headerlink" title="数组切片 Slice"></a>数组切片 Slice</h5><pre><code>&amp;array[1..=3]
+// 获得数组中索引 1 &lt;= index &lt;= 3 的元素的切片
+// 可以理解为获取子集</code></pre><p><strong>注意</strong>：尽量不要将切片用于 &amp;str ，因为有的字符只占一个字节，但有的字符会占两个，如果两者在同一个&amp;str中共存的话，就不知道该返回什么。</p>
+<hr>
+<h5 id="元组-Tuple"><a href="#元组-Tuple" class="headerlink" title="元组 Tuple"></a>元组 Tuple</h5><pre><code>let tuple1 = (&quot;Foo&quot;, &quot;Bar&quot;, &quot;Baz&quot;);
+let bar = tuple.1; // 元素访问
+let (a, b, c) = tuple1; // 元组结构
+// 此时 a,b,c 分别对应 &quot;Foo&quot;, &quot;Bar&quot;, &quot;Baz&quot;
+// 此时所有权已经转移</code></pre><hr>
+<h4 id="向量-Vectors"><a href="#向量-Vectors" class="headerlink" title="向量 Vectors"></a>向量 Vectors</h4><pre><code>// let v: Vec&lt;i32&gt; = Vec::new();
+let v = vec![1, 2, 4, 3, 5];
+println!(&quot;向量 v: {:?} 的长度为 {}。&quot;, v, v.len()); // 输出数组长度 
+// ?? 暂时还不知道为什么要用 {:?} 来输出向量 
+
+println!(&quot;第一个元素：{}&quot;, v[1]); 
+// 此处执行了隐式的类型转换：v -&gt; &amp;v
+// 访问元素也可以用 v.get(1)
+
+v.push(6) // 向 vec 中压入新元素，需要 &amp;mut 
+// 原因：push时需要分配新内存以及将原来的部分复制到新的地方，
+// 在执行该操作时需要避免其他对该对象的引用
+// （因为可能指向已经被移动的原来部分导致“空指针“的出现）
+// v.pop() 同理
+
+for i in &amp;v { ... } // 隐式转换：&amp;v -&gt; iter</code></pre><hr>
+<h5 id="vec-gt-iter-（迭代器）"><a href="#vec-gt-iter-（迭代器）" class="headerlink" title="vec -&gt; iter （迭代器）"></a>vec -&gt; iter （迭代器）</h5><pre><code>v.iter()     // 不能改变 v 中的元素</code></pre><p>或者</p>
+<pre><code>v.iter_mut() // 可以改变 v 中的元素</code></pre><p>返回<code>Option&lt;T&gt;（即 Some(n) / None）</code></p>
+<p>更多资料：<br><a href="https://doc.rust-lang.org/stable/std/vec/struct.Vec.html" target="_blank" rel="noopener">Rust 官方文档：向量/列表</a></p>
+<hr>
+<h4 id="映射-Map"><a href="#映射-Map" class="headerlink" title="映射 Map"></a>映射 Map</h4><pre><code>let mut iter = A.iter().map( |&lt;Variable&gt;| &lt;Expr&gt;/{ ... } )</code></pre><p><code>| ... |</code>: 闭包（closure）</p>
+<p>映射只用于已对元素完成其他操作后的情形，根据上面的语句生成iter后，可用<code>iter.next()</code>访问下一个元素。</p>
+<hr>
+<h4 id="所有权-Ownership"><a href="#所有权-Ownership" class="headerlink" title="所有权 Ownership"></a>所有权 Ownership</h4><h2 id="这部分是-Rust-的精髓。"><a href="#这部分是-Rust-的精髓。" class="headerlink" title="这部分是 Rust 的精髓。"></a><strong>这部分是 Rust 的精髓。</strong></h2><p>Rust中，在同一时段内，所有值均有且仅有一个所有者（Owner），且值的生命周期与所有者相同。</p>
+<ul>
+<li><p><code>A.drop()</code>: 变量退出作用域</p>
+</li>
+<li><p>Rust 对不同类型的所有权处理：</p>
+<ol>
+<li><p>对于占用空间明确/可以压入栈的类型（比如内置的数字类型），在形如 let n2 = n1; 的语句中，会重新创建一个值相同的对象，和其他语言一样；<br>而对于其他类型，在上述语句中，会将原来值的所有权移动（move）给之后的值，原来的值将退出生命周期。<br>注：占用空间明确/可以压入栈的类型：Integer bool float char tuple（元组，条件：只包含已经实现Copy的类型）</p>
+</li>
+<li><p>对于传入函数的其他类型，如果没有返回值且之后也没有调用的话，则在函数调用完之后，这些类型的变量会退出生命周期；</p>
+</li>
+</ol>
+</li>
+<li><p>如果有返回值，则会将返回值的所有权交还给调用该函数的上一级。</p>
+</li>
+<li><p>要执行更高成本的deep copy，可使用clone()方法创建副本：<code>let s2 = s1.clone();</code> </p>
+</li>
+</ul>
+<h5 id="做题经验"><a href="#做题经验" class="headerlink" title="做题经验"></a>做题经验</h5><ul>
+<li><p>若想在传递值时不改变所有权，可使用<strong>共享不可变引用 <code>&amp;A</code></strong> ，或者<strong>独占可变引用 <code>&amp;mut A</code></strong>。要访问引用中的值，可使用 <code>*B</code>。<strong>两者的作用域不能重合！！！</strong></p>
+</li>
+<li><p>若一个函数的参数不为引用（没有 &amp; 和 &amp;mut 修饰），则在执行函数时，该参数的所有权会移交给函数，提供的参数在进入函数时失效（无法再通过原来的变量名访问）。</p>
+</li>
+<li><p>通过引用传入函数的其他类型，由于函数并没有传入对象的所有权，因而这些变    量在离开函数之后也不会退出生命周期。</p>
+</li>
+<li><p>Dangling Reference（虚调用？）：如果一个变量在域内定义，则不能将其引用返    回域外，但可以将变量本身返回域外</p>
+</li>
+<li><p><code>&amp;</code> 和 <code>ref</code> 的区别：</p>
+<ol>
+<li><code>&amp;T</code>：类型：T的引用，可用于变量声明、函数参数和模式匹配中传递引用类型</li>
+<li><code>ref T</code>：主要用于模式匹配，将值绑定在该引用上  </li>
+</ol>
+<p>  <strong>（获取到的类型仍然是T）</strong></p>
+</li>
+<li><p>函数参数可以使用 mut 修饰。</p>
+</li>
+<li><p>Rust 中的方法会根据自身需要，要求不同类型的引用，此时除了<strong><em>相信编译器的力量</em></strong>，还要多多查阅官方文档，以避免不可控的事件。</p>
+</li>
+</ul>
+<hr>
+<h4 id="结构体类型-Struct"><a href="#结构体类型-Struct" class="headerlink" title="结构体类型 Struct"></a>结构体类型 Struct</h4><p>以下展示了定义结构体的几种方法：</p>
+<pre><code>struct ColorClassicStruct {
+    red: i32,
+    green: i32,
+    blue: i32,
+}
+// 允许提供默认值
+
+struct ColorTupleStruct(i32, i32, i32);
+// 该结构元素的访问和元组一样，定义的时候需要在前面加上结构名
+// e.g.: let green = ColorTupleStruct(0, 255, 0);
+
+struct UnitLikeStruct;
+// 没有任何字段的类单元结构体
+// 单元结构体： ()</code></pre><ul>
+<li><p>如果需要某个类型来实现某种<strong>不需要数据</strong>的行为时就可以用<strong>类单元结构体</strong>，<strong>类似于其它语言中没有数据成员的类</strong>。</p>
+</li>
+<li><p>输出时可用 <code>{:?}</code> 获得结构体类型的名称。</p>
+</li>
+<li><p>可以用 <code>let A2 = A { a: false, ..A1}</code> 定义除了a之外，其他元素和A1一样的对象。</p>
+</li>
+<li><p><strong>最好尽量保证结构体拥有其数据，也就是说尽量不要使用引用</strong>。<br>  比如说尽量用 <code>String</code> 而不是 <code>&amp;str</code></p>
+</li>
+<li><p>定义针对结构变量的方法和关联函数：<code>impl B { fn mB1(&amp;self) -&gt; u32 { ... } }，</code></p>
+</li>
+<li><p>方法的第一个参数必须是 <code>self: &amp;[mut] self</code> （可以简写为<code>&amp;self</code>）</p>
+</li>
+<li><p>关联函数不需要遵循上面的条件，用 <code>B::B2()</code> 调用，<br>例：<code>String::from()</code>，一般用于初始化对象（创建新的实例）</p>
+</li>
+</ul>
+<h4 id="枚举类型-Enum"><a href="#枚举类型-Enum" class="headerlink" title="枚举类型 Enum"></a>枚举类型 Enum</h4><pre><code>enum An_Enum
+{ 
+    Int_2(i32, i32), 
+    Float(f64), 
+    Text(String), 
+    Other,  
+}
+
+let A = An_Enum::Int_2(0, 0);</code></pre><ul>
+<li><p>Rust 中枚举类型只作为标识符，不具有对应的“数字索引”。</p>
+</li>
+<li><p>枚举类型中的各个成员的类型可以不一样。</p>
+</li>
+<li><p>枚举Option在标准库中的定义：<code>enum Option&lt;T&gt; { None, Some(T), }</code><br>可用于消除空值运算的风险</p>
+</li>
+</ul>
+<h5 id="match-语句：匹配枚举类型"><a href="#match-语句：匹配枚举类型" class="headerlink" title="match 语句：匹配枚举类型"></a>match 语句：匹配枚举类型</h5><pre><code>enum Year { 2005, 2006, 2007, }
+enum Coin { 
+    Fen, 
+    Jiao, 
+    Yuan(Year), 
+} 
+// 可以用(A)或者{ a:i32, b:i32 }绑定其他类型，之后match可以用
+
+fn value_in_coins(coin: Coin) -&gt; u8 {
+    match coin { // 此处的coin可以是任意类型，不一定是if那样的表达式
+        Coin::Fen =&gt; 1,
+        Coin::Jiao =&gt; 10,
+        Coin::Yuan(year) =&gt; {
+            println!(“这个一块发行于{:?}年”, year);
+            100
+        } // 可以是语句块
+
+        // _ =&gt; (), 对默认情况 _（上面没有处理的情况）操作，
+        // match 中必须处理所有可能出现的情况
+    }
+}
+fn main() {
+    value_in_coins( Coin::Yuan(2005) )
+}</code></pre><ul>
+<li><p>在匹配到的枚举元素后面，如果需要传递元组，需要拆成一个个元素才能传递</p>
+</li>
+<li><p>如果想忽略其中一些元素，可使用 _ ，忽略几个就打几个</p>
+</li>
+<li><p>如果想忽略之后的所有元素，可使用 ..</p>
+</li>
+<li><p>match 可用于处理 <code>Option&lt;T&gt;</code></p>
+</li>
+<li><p>匹配模式（=&gt; 左边的值）：<br>字面值、命名变量、多个值（用 | 分割）、区间表达式</p>
+</li>
+</ul>
+<hr>
+<h4 id="字符串类型-amp-Str-and-String"><a href="#字符串类型-amp-Str-and-String" class="headerlink" title="字符串类型 &amp;Str and String"></a>字符串类型 &amp;Str and String</h4><p>笔者目前遇到的 Rust 字符串有 2 种：<code>&amp;str</code> 和 <code>String</code>。字面量为 <code>&amp;str</code> 。</p>
+<h5 id="amp-str"><a href="#amp-str" class="headerlink" title="&amp;str"></a>&amp;str</h5><h5 id="String"><a href="#String" class="headerlink" title="String"></a>String</h5><pre><code>// &amp;str -&gt; String
+let A = String::from(&quot;foo&quot;);</code></pre><p><code>&amp;s[RangeExpr]</code> : 字符串切片</p>
+<p>访问 <code>String</code> 时需要用 <code>&amp;</code> 。</p>
+<ul>
+<li>以下提供一些字符串的常用方法（其他可查阅官方文档）：<ol>
+<li><code>A + &quot; ... &quot;</code>: 字符串拼接，注意后面的是 <code>&amp;str</code> 。</li>
+<li><code>A.replace(B, C)</code>: 将 A 中所有的子串 B 换成 C 。</li>
+<li><code>&quot;...&quot;.to.owned()</code>: 将 <code>&amp;str</code> 转换为 <code>String</code>， 且获取其所有权。</li>
+<li><code>A.to_uppercase() / A.to_lowercase()</code> : 字面意思。</li>
+<li><code>A.as_bytes()</code>: 可将字符串转换为为 <code>vec</code>。</li>
+<li><code>A.as_chars()</code>: 可将字符串转换为迭代器。</li>
+<li><code>A.clear()</code>: 清空字符串</li>
+<li><code>A.trim()</code>: 删除字符串两端所有的空白字符</li>
+<li><code>A.trim_matches(&lt;pattern&gt;)</code>: 匹配字符串中所有的 pat 并删除<br>（ pat 不一定是字符串，比如<code>char::is_numeric</code>会删掉所有的数字）<br><code>&amp;str</code>会自动转换为<code>String</code><br>派生：<code>str.trim_left/right_matches(pat)</code></li>
+<li><code>str.splitn(n, “&lt;sign&gt;”)</code>: 根据特定的sign将字符串分割为n份<br>如果要从后面开始分割就用 <code>str.rsplitn(...)</code><br>如果不需要知道具体多少份，只需要全部分割，就用 <code>split_terminator(&quot;&lt;sign&quot;?)</code></li>
+</ol>
+</li>
+</ul>
+<hr>
+<h4 id="包-Crates"><a href="#包-Crates" class="headerlink" title="包 Crates"></a>包 Crates</h4><pre><code>use std::time::{SystemTime, UNIX_EPOCH};
+// 以上是一个应用标准库模块的示例
+
+mod &lt;mod_name&gt; {
+    [pub] use &lt;some_explicit_module&gt; as &lt;alias&gt;; 
+    // 在 mod 内使用外部模块
+
+    fn ... { ... }        // 私有成员
+    pub fn ... { ... }    // 公有成员
+}</code></pre><h5 id="做题经验-1"><a href="#做题经验-1" class="headerlink" title="做题经验"></a>做题经验</h5><ol>
+<li><p>cargo new得到的包中，./src/main.rs是与包同名的二进制crate的crate根，<br>而./src/lib.rs是与包同名的库crate的crate根，两者可共存<br>每个./src/bin下的文件都会被编译成一个独立的二进制crate</p>
+</li>
+<li><p>对一个模块（mod），编译时会从<code>crate</code>根开始逐级往下编译，<br>在根文件中可通过<code>mod &lt;name&gt;;</code>声明模块。<br>寻找该模块：  </p>
+<ol>
+<li>内联：用语句块{ … }代替分号  </li>
+<li>在./src/<name>.rs  </name></li>
+<li>在./src/<name>/mod.rs （老风格）  </name></li>
+</ol>
+<ul>
+<li>在上述ii, iii的文件中仍可以用<code>mod &lt;name2&gt;;</code>声明子模块 </li>
+</ul>
+<p>模块一般需要定义在上一级的代码文件中，<br>如果想将当前目录下的主文件<code>&lt;name&gt;.rs</code>拆分成多个文件，也可以使用mod声明，<br>然后将声明的对象放在同级的文件夹中，<br>拆分后文件的子模块和上面操作一样，新建同名文件夹并将子模块放进去即可<br>访问：<code>&lt;crate&gt;::&lt;name1&gt;::&lt;name2&gt;</code></p>
+<p>默认私有，公用：<code>pub mod &lt;pubname&gt;;</code><br>访问模块的快捷方式：<code>use &lt;crate&gt;::&lt;name1&gt;::&lt;name2&gt;;</code> ，<br>之后就可以只用<code>&lt;name2&gt;</code>访问</p>
+<p>用途：对代码进行分组，使整体结构清晰</p>
+</li>
+<li><p>根据模块树的路径访问模块：用 <code>::</code><br>绝对路径：从<code>crate</code>开始； 相对路径：从当前位置开始</p>
+</li>
+<li><p>父模块的项不能使用子模块中的私有项，但反过来可以</p>
+</li>
+<li><p>公有项里面的私有项仍然是私有项<br>由此可以管理模块中的公有和私有方法，以及结构的公有成员和私有成员<br>但公有枚举的所有成员均为公有</p>
+</li>
+<li><p><code>use super::&lt;...&gt;;</code> 从父模块的路径开始</p>
+</li>
+<li><p><code>use</code>不允许导入同名的快捷方式，但可以通过父模块区分，<br>或者用<code>as</code>（像Python一样）起别名</p>
+</li>
+<li><p><code>pub use</code>：不仅将一个名称导入了当前作用域，还允许别人把它导入他们自己的作用域。<br>用途：导出公有的API</p>
+</li>
+<li><p>使用外部包：在包中的<code>Cargo.toml</code>文件中加入<code>&lt;packagename&gt; = &quot;&lt;version&gt;&quot;</code></p>
+</li>
+<li><p><code>use std::{cmp::Ordering, io};</code> ：可以用嵌套路径缩短use行</p>
+</li>
+<li><p><code>use std::collections::*;</code> ：*称为glob(al?)运算符，引入该模块下的所有公有成员<br>务必小心，可能会有7中同名的情况<br>常用于测试模块test中，有时也用于prelude模式</p>
+</li>
+<li><p><code>build.rs</code>：构建脚本<br>关于构建脚本的一些使用场景如下：</p>
+<ul>
+<li>构建 C 依赖库</li>
+<li>在操作系统中寻找指定的 C 依赖库</li>
+<li>根据某个说明描述文件生成一个 Rust 模块</li>
+<li>执行一些平台相关的配置</li>
+</ul>
+<p><strong>构建脚本的输入可以是环境变量和构建脚本所在的当前目录</strong><br><strong>构建脚本的输出不应修改该目录之外的任何文件</strong><br>更多资料：<br><a href="https://course.rs/cargo/reference/build-script/intro.html" target="_blank" rel="noopener">构建脚本 build.rs - Rust语言圣经(Rust Course)</a></p>
+<p>此脚本通过 stdout （标准输出）提供输出。<br>打印的所有行都写入到target/debug/build/<pkg>/output。<br>另外，以 cargo: 为前缀的行将由 cargo 直接解析，<br>因此可用于定义包编译的参数。  </pkg></p>
+</li>
+</ol>
+<hr>
+<h4 id="哈希表-HashMap"><a href="#哈希表-HashMap" class="headerlink" title="哈希表 HashMap"></a>哈希表 HashMap</h4><ul>
+<li><p>使用前提：(因为比较少用，所以没有被 <code>prelude</code> 导入)</p>
+<p>  use std::collections::HashMap;</p>
+</li>
+<li><p>哈希表对应 Python 中的字典，用于储存键-值对。</p>
+<pre><code>let hm1 = HashMap::&lt;String, i32&gt;::new();
+
+hm1.insert( &lt;key&gt;, &lt;value&gt; );
+// 会转移所有权，可以用 &amp;
+
+hm1.entry( &lt;key&gt; ).or_insert( &lt;value&gt; )
+// 如果 hm1 中没有键 k ，就插入( &lt;key&gt;, &lt;value&gt; )
+
+hm1.get( &lt;key&gt; )
+// 读取元素
+
+// 打印时顺序是任意的</code></pre></li>
+</ul>
+<hr>
+<h4 id="异常处理-Panics"><a href="#异常处理-Panics" class="headerlink" title="异常处理 Panics"></a>异常处理 Panics</h4><ol>
+<li><p>显式调用：<code>panic!(“&lt;err_message&gt;”);</code></p>
+</li>
+<li><p>默认展开（回溯栈并清理所有数据），可在<code>Cargo.toml</code>文件中设置为终止，可以让最终二进制文件更小，用法：在该文件中加入:</p>
+<p>  [profile.release]<br>  panic = ‘abort’</p>
+</li>
+<li><p><code>enum Result&lt;T, E&gt; { Ok(T), Err(E), }</code> 用match处理</p>
+</li>
+<li><p>错误处理：依靠<code>Result</code>类型，<br>例如如果需要获得正确的结果(T)，就用<code>match</code>匹配即可（用闭包更短更快）</p>
+</li>
+<li><p><code>panic</code>处理简写：</p>
+<ol>
+<li><code>&lt;ResultObject&gt;.unwrap()</code> 返回Ok内的T，否则抛出panic<br>（尽量别用，因为这对人工检查代码没有Err的要求比较高）</li>
+<li><code>&lt;ResultObject&gt;.expect(&quot;&lt;err_msg&gt;&quot;)</code> 同上，抛出时附带信息（更常用）</li>
+<li><code>&lt;ResultObject&gt;?</code> 同<code>.unwrap()</code>，能使代码更短（只能用在返回Result类型的函数中）</li>
+</ol>
+</li>
+<li><p>如果能准确预测错误的出现（可以恢复运行的错误），最好返回<code>Result&lt;T, E&gt;</code>而不是经常使用panic</p>
+</li>
+<li><p>输入字符串，处理为数字：<code>str.parse::&lt;i32&gt;()</code></p>
+</li>
+<li><p>▲ 在没有返回值（比如main）或者返回值为()的函数中不能使用 ? 运算符，<br>如果想用可以给函数加上返回值类型（返回Result类型；main也可以）<br>可以用<code>unwrap()</code>代替？<strong>（不建议使用）</strong><br>另：返回的Result可以是<code>Result&lt;(), ErrorType&gt;</code>，<br>  也可以是 <code>Result&lt;(), Box&lt;dyn ErrorType&gt;&gt;</code><br>  （可以捕捉所有类型的错误，但不建议在库代码中使用）  </p>
+</li>
+</ol>
+<hr>
+<h4 id="泛型-Generics"><a href="#泛型-Generics" class="headerlink" title="泛型 Generics"></a>泛型 Generics</h4><ol>
+<li>用在函数上：<code>fn largest&lt;T&gt;(list: &amp;[T]) -&gt; &amp;T {}</code></li>
+<li>可用于函数、结构体、枚举、方法等</li>
+<li>泛型定义中同一个字母只代表一种类型</li>
+<li>Option 和 Result 就是利用泛型实现的</li>
+<li>使用泛型的接口：<code>impl&lt;T&gt; Name&lt;T&gt; { }</code></li>
+<li>泛型代码编译时会先进行单态化</li>
+<li>可以针对特定类型实现特殊方法，如<code>impl Point&lt;f32&gt; {}</code></li>
+<li>针对值的泛型：如<code>arr: [T; N]</code> 或者 <code>arr: [i32; 3]</code></li>
+</ol>
+<hr>
+<h4 id="接口-Traits"><a href="#接口-Traits" class="headerlink" title="接口 Traits"></a>接口 Traits</h4><ol>
+<li><p>声明：<code>trait &lt;trait_name&gt; { }</code><br>实现：<code>impl &lt;trait_name&gt; (for &lt;datatype&gt;) { }</code></p>
+</li>
+<li><p>trait 可以作为参数，以 <code>item: &amp;impl datatype</code> 的形式传入，以<code>item.method()</code>的形式调用方法（与 <code>&lt;T: datatype&gt;(item: &amp;T)</code> 等价）</p>
+</li>
+<li><p>可以用 + 连接需要同时实现的多个接口，<br>如<code>(item: &amp;(impl Summary + Display)</code><br>如果太长，可以用where写成：</p>
+<p>  fn some_function&lt;T, U&gt;(t: &amp;T, u: &amp;U) -&gt; i32<br>  where</p>
+<pre><code>T: Display + Clone,
+    U: Clone + Debug,</code></pre><p>  { … }</p>
+<p><code>impl&lt;T: trait_name&gt; name&lt;T&gt;</code>：函数名处的<code>&lt;...&gt;</code>不需要再写实现的模块</p>
+</li>
+<li><p>返回值也可以用 <code>impl trait</code> 指定返回实现了trait的类型，但由于泛型会进行单态化，所以函数中所有的返回值类型必须一致</p>
+</li>
+<li><p>trait 中可以为方法提供默认行为，不是非要在 impl 中定义</p>
+</li>
+</ol>
+<hr>
+<h4 id="生命周期-Lifetimes"><a href="#生命周期-Lifetimes" class="headerlink" title="生命周期 Lifetimes"></a>生命周期 Lifetimes</h4><ol>
+<li>显式声明如：<code>&amp;i32</code>改为<code>&amp;&#39;a i32</code></li>
+<li>函数名后加标签：<code>method&lt;&#39;a&gt;</code></li>
+<li>不允许创建悬垂引用（空指针），通过改变生命周期的方法也不行</li>
+<li><code>&#39;static</code>：变量生命周期贯穿整个程序<br>大部分情况中，推荐 <code>&#39;static</code> 生命周期的错误信息都是尝试创建一个悬垂引用或者可用的生命周期不匹配的结果。<br>在这种情况下的解决方案是修复这些问题而非指定一个 <code>&#39;static</code> 的生命周期。</li>
+<li>可以用 static 代替 let 声明静态变量，此时需要<strong>显式</strong>指定变量类型</li>
+<li>生命周期约束：<br><code>&lt;’a, ‘b:’a, T&gt;</code>: 声明 ‘b 至少要和 ‘a 活得一样久<br><code>&lt;’a, T&gt;</code>：表示 T 至少比 ‘a 活得久</li>
+<li>引用的生命周期从借用处开始一直到<strong>最后一次使用的地方</strong></li>
+</ol>
+<hr>
+<h4 id="迭代器和闭包-Iterators-and-Closure"><a href="#迭代器和闭包-Iterators-and-Closure" class="headerlink" title="迭代器和闭包 Iterators and Closure"></a>迭代器和闭包 Iterators and Closure</h4><ol>
+<li><p>声明：如<code>A.iter()</code></p>
+</li>
+<li><p>迭代器接口：</p>
+<p>pub trait Iterator {<br>  type Item;<br>  fn next(&amp;mut self) -&gt; Option<a href="Self::Item">Self::Item</a>;<br>  // 此处省略了方法的默认实现<br>}</p>
+<p><code>iter.next()</code> 返回 <code>Some(下一项)</code>，结束时返回 <code>None</code></p>
+</li>
+<li><p>迭代器声明后必须被使用</p>
+</li>
+<li><p>闭包：可以保存进变量或者作为参数传递给其他函数的匿名函数</p>
+</li>
+<li><p>闭包定义：<code>|x, y, z| { }</code> （只有一行时大括号可省略）<br>竖线内为参数<br>可以在一个地方创建闭包，之后在不同的上下文中进行闭包运算</p>
+<p>  let capitalize_words: Vec<String> = words.iter().map(|x| capitalize_first(x)).collect();<br>  // map方法接受一个闭包作为参数</String></p>
+<p>  let expensive_closure = |num| {</p>
+<pre><code>println!(&quot;calculating slowly...&quot;);
+thread::sleep(Duration::from_secs(2));
+num</code></pre><p>  };<br>  // 后面的用法应该类似python的lambda函数</p>
+</li>
+<li><p><code>&lt;...&gt;.collect()</code> 可以直接将前面的表达式收集为需要返回的目标类型，<strong>目标类型需要明确指定</strong>。</p>
+</li>
+<li><p>一些方法：</p>
+<p><code>Iter.count()</code>：返回迭代器项数</p>
+<p><code>Iter.sum()</code>：返回迭代器的和</p>
+<p><code>Iter.product()</code>：返回迭代器的积</p>
+<p><code>Iter.filter( |x| expr_x )</code>：根据表达式真假过滤元素</p>
+<p><code>List_Iter_A.enumerate()</code>: 可生成元组(Index, &amp;Element) </p>
+<p>更多资料：</p>
+<ol>
+<li><a href="https://blog.csdn.net/feiyanaffection/article/details/125574862" target="_blank" rel="noopener">【Rust 笔记】13-迭代器（上）_rust笔记 迭代器 13 中-CSDN博客</a></li>
+<li><a href="https://blog.csdn.net/feiyanaffection/article/details/125574968" target="_blank" rel="noopener">【Rust 笔记】13-迭代器（下）_rust product-CSDN博客</a></li>
+</ol>
+</li>
+<li><p>Hashmap转Vec：Vec::from_iter( hashmap.iter() )<br>返回[(K1,V1), (K2,V2), …]<br>可以换成hashmap.keys() / .values() 这两个方法直接返回迭代器  </p>
+</li>
+</ol>
+<hr>
+<h4 id="智能指针-Smart-Pointers"><a href="#智能指针-Smart-Pointers" class="headerlink" title="智能指针 Smart Pointers"></a>智能指针 Smart Pointers</h4><ol>
+<li><p><code>Box&lt;T&gt;</code>：将数据存放在堆中，在栈中压入一个指向堆中数据的指针<br>用途：<br>1）编译时未知大小的类型，又想要在需要确切大小的上下文中使用这个类型值的时候<br>2）有大量数据并希望在确保数据不被复制的情况下转移所有权时</p>
+</li>
+<li><p>递归（Recrusive）：<br>定义：</p>
+<p>  enum List {</p>
+<pre><code>Cons(i32, List),
+Nil, // Nil代表循环终止</code></pre><p>  }</p>
+<p>使用：<code>let list = Cons(1, Cons(2, Cons(3, Nil)))</code></p>
+<p><strong>在Rust中实现递归最大的问题是不知道运行的时候需要占用多少内存</strong>，<br>因此可以利用Box<T>改成这样：</T></p>
+<p>enum List {<br>  Cons(i32, Box<List>),<br>  Nil, // Nil：代表循环终止<br>}</List></p>
+<p>使用：<code>let list = Box::new(Cons(1, Box::new(Cons(2, Box::new(Cons(3, Nil))))));</code></p>
+</li>
+<li><p>解引用（dereference）：<code>*</code><br>实现 deref trait 即可，该特性允许智能指针采用与引用相同的处理方式进行处理<br>隐式Deref强制转换：有时可以省略&amp;或*  </p>
+</li>
+<li><p>Drop trait：(<code>std::mem::drop</code>)<br>需要实现方法drop，获取可变引用，最后释放资源<br>用法：<code>A.drop()</code>  </p>
+</li>
+<li><p>引用计数（reference counting）：<code>Rc&lt;T&gt;</code><br>用于需要用到多所有权的情况中<br>声明：<code>let Rc_A = Rc::new();</code><br>获取多所有权：<code>let Rc_1 = Rc::clone( &amp;Rc_A );</code>（可能需要显式指定类型）<br>释放多所有权：<code>drop(Rc_1);</code><br>获取和释放的顺序<strong>可以不一样</strong>  </p>
+</li>
+<li><p>Cow：Clone on write，<code>use std::borrow::cow;</code><br>仅当需要可变的 B 类型对象或者获取所有权时，才会将该对象复制并传递<br>当然也可以将比如没有 &amp; 的 slice 等类型按正常方式传递所有权<br>以下是标准库中的原型：</p>
+<p>  pub enum Cow&lt;’a, B&gt;<br>  where</p>
+<pre><code>B: &apos;a + ToOwned + ?Sized,</code></pre><p>  {</p>
+<pre><code>Borrowed(&amp;&apos;a B),
+Owned(&lt;B as ToOwned&gt;::Owned),</code></pre><p>  }</p>
+</li>
+</ol>
+<hr>
+<h4 id="线程-Threads-并发-Concurrent-Programming"><a href="#线程-Threads-并发-Concurrent-Programming" class="headerlink" title="线程 Threads / 并发 Concurrent Programming"></a>线程 Threads / 并发 Concurrent Programming</h4><ol>
+<li><p>并发（Concurrent Programming）：<br>程序的不同部分相互独立地执行<br>并行（Parallel Programming）：<br>程序的不同部分相互独立且同时执行<br>对操作系统来说，<br>  进程是资源分配的基本单位<br>  线程是任务执行的基本单位<br>目的：将一批任务分给多个线程同时处理以提高效率  </p>
+</li>
+<li><p>创建新线程：</p>
+<p>  use std::thread;<br>  &lt;let handle =&gt; thread::spawn( <move> || { 线程具体内容 })</move></p>
+<p>两条竖线是没有参数的闭包<br>可选的<code>move</code>用于转移该线程中用到的变量所有权    </p>
+</li>
+<li><p><code>handle.join()</code> 等待所有线程结束，返回Result<T><br><code>thread::sleep(Duration::from_millis(1))</code>: 休眠<br>（需要用到 <code>std::time::Duration</code>）</T></p>
+</li>
+<li><p>在线程之间传递数据：</p>
+<p>  let (Transmitter, Receiver) = std::sync::mpsc::channel();<br>  // mpsc：Multiple producers and single conducter<br>  Transmitter.send(val) 通过Transmitter将val发送给Receiver</p>
+<p><code>Receiver.recv()</code>: 通过Receiver接受Transmitter发送过来的数据<br>上述两个方法会转移所有权，且返回<code>Result&lt;T&gt;</code><br>一个发送信道只能传递给一个线程，不过可以用<code>clone</code></p>
+</li>
+<li><p>互斥器（Mutual Exclusion）：<br><code>Mutex&lt;T&gt;</code>：任意时刻只允许一个线程访问某些数据<br>难点：</p>
+<ol>
+<li>在使用数据之前使用<code>mutex_val.lock()</code>先将数据锁定在当前线程</li>
+<li>在处理完数据后解锁让其他的线程获取lock<br>e.g.:<br>对于一个<code>A = Arc(Mutex(Struct1( …… )))</code>对象，<br>调用Struct1内元素的方法是：<code>A.lock().unwrap().element1</code><br>对于有<code>Mutex&lt;T&gt;</code>的对象都需要先获取lock()  </li>
+</ol>
+</li>
+<li><p>原子引用计数<code>Arc&lt;T&gt;</code>：<br>在<code>std::sync::Arc</code>中，用法和<code>Rc&lt;T&gt;</code>完全一样，但是能保证线程安全</p>
+</li>
+</ol>
+<hr>
+<h4 id="宏-Macros"><a href="#宏-Macros" class="headerlink" title="宏 Macros"></a>宏 Macros</h4><ol>
+<li>优势：<br>  可以接受不同数量的参数；<br>  可以在编译前展开且为一个给定类型实现trait<br>缺点：<br>  更难阅读、理解和维护<br>  调用前必须定义  </li>
+<li>声明：<code>macro_rules! &lt;macro_name&gt; {  }</code>     </li>
+<li>要使用在mod中的宏，可以在mod开头加入<code>#[macro_use]</code></li>
+<li>宏匹配的分支用<code>;</code>分隔即可，最后一个不需要</li>
+</ol>
+<h4 id="类型转换-Conversions"><a href="#类型转换-Conversions" class="headerlink" title="类型转换 Conversions"></a>类型转换 Conversions</h4><ol>
+<li><code>as</code>：强制类型转换<br>（Rust <strong>不允许数值进行隐式的类型转换</strong>，也就是说1+1.0不合法）</li>
+<li><code>from() / into()</code>：用于类型转换，实现了from就能自动实现into<br><code>try_from() / try_into()</code>：简单安全的类型转换，适用于比较容易错的类型转换<br>库：<code>std::convert::{TryFrom, TryInto};</code><br>上述方法可以实现泛型  </li>
+<li><code>as_ref() / as_mut()</code> ：<br>对一个类型T，若实现了<code>AsRef&lt;U&gt;</code>，则可通过<code>as_ref()</code>将T转化为U的引用<br><code>as_mut()</code>为其可变版本</li>
+</ol>
+<h4 id="测试-Tests"><a href="#测试-Tests" class="headerlink" title="测试 Tests"></a>测试 Tests</h4><ol>
+<li><code>#[test]</code>：可以加在mod或者fn上面，则这个代码块只会在cargo test中运行，在所有测试标签中要放在最上面<br>更常用：<code>#[cfg(test)]</code>：同上，但在cargo build中不编译</li>
+<li><code>assert!()</code>：用于断言某些条件为真，第二个参数是可选的错误信息<br><code>assert_eq/ne!(A, B)</code>：字面意思</li>
+<li>一般测试模块都会加入<code>use super::*;</code>来避免写出繁复的块外调用</li>
+<li><code>#[Should_panic]</code>：<br>当下面的代码块抛出panic时测试通过<br><strong>不能</strong>在返回Result类型的代码块中使用</li>
+<li>并行：<code>cargo test -- --test-threads=&lt;num&gt;</code></li>
+<li>打印运行时输出的值：<code>cargo test -- --show-output</code></li>
+<li><code>cargo test &lt;method_name&gt;</code>：指定运行哪些测试方法，<br>此处的参数是指：包含参数这个字符串的所有方法（不仅仅是这一个）</li>
+<li><code>#[ignore]</code>：忽略某些测试<br><code>cargo test -- --ignored</code>：只运行被忽略的测试<br><code>cargo test -- --include-ignored</code>：运行所有测试  </li>
+<li>集成测试：<br>在包的根目录下（和src同级的地方）创建 tests 文件夹，<br>新建 <code>integration_test.rs</code> 文件存放集成测试<br>需要加入 <code>use &lt;包名&gt;;</code><br>如果需要在tests中创建不需要被执行的模块，须在模块目录下新建mod.rs，将模块内容放进去  </li>
+</ol>
+<hr>
+<h4 id="非安全代码块-Unsafe-Block"><a href="#非安全代码块-Unsafe-Block" class="headerlink" title="非安全代码块 Unsafe Block"></a>非安全代码块 Unsafe Block</h4><ol>
+<li>信息来自ChatGPT：<br>在Rust中，<code>*mut</code>是一个指针类型，表示可变的裸指针（raw pointer）。裸指针是一种直接存储内存地址而不提供安全性保证的指针类型。<code>*mut T</code>中的T是指针指向的类型。<code>*mut</code>指针可以用于访问和修改内存中的数据，但是使用它们需要特别小心，因为它们不受Rust的所有权和借用规则的保护，可能导致内存安全问题。<br>使用<code>*mut</code>指针需要谨慎，因为它们可以绕过Rust的借用检查和内存安全性检查。在编写涉及裸指针的代码时，需要确保自己明确了解代码中的所有权和生命周期，并尽量减少对裸指针的使用，以减少潜在的错误和安全隐患。</li>
+<li>使用：<code>unsafe { ... }</code><br>所有涉及到不安全行为的代码全部都要放在unsafe内</li>
+<li>裸指针（Naked pointer）：<br>？？？ 和C中的指针比较类似，可以通过unsafe中的裸指针修改值</li>
+<li><code>Box::into_raw(&lt;data&gt;)</code>：可以用于将<code>Box&lt;T&gt;</code>类型的data转换为 <code>*T</code>,<br><code>Box::from_raw(&lt;*mut_data&gt;)</code>：可以将<code>*T</code>转换为<code>Box&lt;T&gt;</code></li>
+</ol>
+<h6 id="关于题99"><a href="#关于题99" class="headerlink" title="关于题99"></a>关于题99</h6><p><a href="https://rustwiki.org/zh-CN/reference/items/external-blocks.html" target="_blank" rel="noopener">外部块 External Block</a></p>
+<p><a href="https://course.rs/advance/unsafe/superpowers.html" target="_blank" rel="noopener">Unsafe 的五种兵器</a></p>
+<p><a href="https://rustwiki.org/zh-CN/rust-by-example/std_misc/ffi.html" target="_blank" rel="noopener">外部语言函数接口 Extern</a></p>
+<hr>
+<h4 id="算法-Algorithms：第一阶段的拦路虎"><a href="#算法-Algorithms：第一阶段的拦路虎" class="headerlink" title="算法 Algorithms：第一阶段的拦路虎"></a>算法 Algorithms：第一阶段的拦路虎</h4><h5 id="栈-Stack"><a href="#栈-Stack" class="headerlink" title="栈 Stack"></a>栈 Stack</h5><ul>
+<li>LIFO（最后入栈的元素最先出栈）</li>
+<li>更快，因为数据在物理地址上更近，且组织形式简单</li>
+</ul>
+<h5 id="堆-Heap"><a href="#堆-Heap" class="headerlink" title="堆 Heap"></a>堆 Heap</h5><ul>
+<li><p>分配内存并返回指向该内存的指针</p>
+</li>
+<li><p>调用函数时，函数参数（以及指向这些值的指针）会被压入栈以提高运行速度。</p>
+</li>
+<li><p>可以用栈实现，分为小顶堆和大顶堆</p>
+<p>  pub struct Heap<T><br>  where</T></p>
+<pre><code>T: Default,</code></pre><p>  {</p>
+<pre><code>count: usize,
+items: Vec&lt;T&gt;,
+comparator: fn(&amp;T, &amp;T) -&gt; bool,</code></pre><p>  }</p>
+<p>  impl<T> Heap<T><br>  where</T></T></p>
+<pre><code>T: Default,</code></pre><p>  {</p>
+<pre><code>pub fn new(comparator: fn(&amp;T, &amp;T) -&gt; bool) -&gt; Self {
+    Self {
+        count: 0,
+        items: vec![T::default()],
+        // 留下0号位，不使用
+        comparator,
+    }
+}
+
+pub fn len(&amp;self) -&gt; usize {
+    self.count
+}
+
+pub fn is_empty(&amp;self) -&gt; bool {
+    self.len() == 0
+}
+
+pub fn add(&amp;mut self, value: T) {
+    //TODO
+    self.count += 1;
+    self.items.push(value);
+    let new_idx = self.count;
+    self.heapify_from_bottom_to_top(new_idx);
+}
+
+fn heapify_from_bottom_to_top(&amp;mut self, mut idx: usize) {
+    // 目的：针对某一个元素自下而上堆化
+    // 因为加入的新元素可能破坏堆结构
+    // idx 为新元素的索引
+    // 假设现在需要生成小顶堆，则比较器接口 comparator 应为 a &lt; b -&gt; true
+
+    while idx &gt; 1 {
+        if (self.comparator)(&amp;self.items[ idx ], &amp;self.items[ idx/2 ]) {
+            // 这里的 i &gt; 1 是因为初始化堆时，已经预留了0号位不使用，所以此时堆中只有一个元素
+            // 如果新元素比它现在的父节点大，就交换两者
+            self.items.swap(idx, idx/2);
+            idx /= 2;
+            // 此时新元素的索引已经更新为 i/2 ，再次比较，直到上方元素小于或等于下方元素则终止
+            // 注：堆中允许存在重复的元素
+        } else {
+            break;
+            // !!! 这一条break非常重要！！！
+            // 用于判定元素是否已经到达符合条件的位置
+            // 如果没有break，会导致idx一直没有改变，从而陷入死循环
+        }
+    }
+}
+
+fn heapify_from_top_to_bottom(&amp;mut self, mut idx: usize) {
+    // 目的：针对某一个元素自上而下堆化
+    // 其他同上
+    while self.children_present(idx) {
+        // 如果当前节点有子节点
+        let schild = self.smallest_child_idx(idx);
+        // schild 是当前节点下索引应当最小的那个元素的索引
+        if (self.comparator)( &amp;self.items[ schild ], &amp;self.items[ idx ] ) {
+            // 如果该子节点的值比新元素小，则需要将子节点的值上移
+            self.items.swap( schild, idx );
+            idx = schild;
+            // 此时新元素的索引已经更新为schild，重复该操作直到该元素到达正确的位置，
+            // 或者该元素已经没有子节点
+        } else {
+            break;
+            // !!! 这一条break非常重要！！！
+            // 用于判定元素是否已经到达符合条件的位置
+            // 如果没有break，会导致idx一直没有改变，从而陷入死循环
+        }
+    }
+}
+
+fn parent_idx(&amp;self, idx: usize) -&gt; usize {
+    idx / 2
+}
+
+fn children_present(&amp;self, idx: usize) -&gt; bool {
+    // 该方法用于判定当前节点有无子节点
+    self.left_child_idx(idx) &lt;= self.count
+}
+
+fn left_child_idx(&amp;self, idx: usize) -&gt; usize {
+    idx * 2
+}
+
+fn right_child_idx(&amp;self, idx: usize) -&gt; usize {
+    self.left_child_idx(idx) + 1
+}
+
+fn smallest_child_idx(&amp;self, idx: usize) -&gt; usize {
+    //TODO
+    // 目的：返回当前节点下索引应当最小的那个元素的索引（？？？）
+    let lchild = self.left_child_idx(idx);
+    let rchild = self.right_child_idx(idx);
+    if rchild &gt; self.count || (self.comparator)( &amp;self.items[ lchild ], &amp;self.items[ rchild ] ) {
+        // 根据堆的结构：最底层的节点靠左填充，其他层节点全部被填满，
+        // 如果右边没有元素（表现为用于储存数据的栈 items 长度不够），则直接返回左节点索引
+        // 对小顶堆来说，每个节点左侧的节点值必定比右侧的大，此时返回左节点索引
+        lchild
+    } else {
+        rchild
+    }
+}</code></pre><p>  }</p>
+<p>  impl<T> Heap<T><br>  where</T></T></p>
+<pre><code>T: Default + Ord,</code></pre><p>  {</p>
+<pre><code>/// Create a new MinHeap
+pub fn new_min() -&gt; Self {
+    Self::new(|a, b| a &lt; b)
+}
+
+/// Create a new MaxHeap
+pub fn new_max() -&gt; Self {
+    Self::new(|a, b| a &gt; b)
+}</code></pre><p>  }</p>
+<p>  impl<T> Iterator for Heap<T><br>  where</T></T></p>
+<pre><code>T: Default,</code></pre><p>  {</p>
+<pre><code>type Item = T;
+
+fn next(&amp;mut self) -&gt; Option&lt;T&gt; {
+    //TODO
+    if self.count == 0 {
+        return None;
+    }  
+    // 如果堆中存在元素，就将其与堆顶元素交换后移出该元素
+    let next_elem = self.items.swap_remove(1);
+    self.count -= 1;
+    self.heapify_from_top_to_bottom(1);
+    Some(next_elem)
+}</code></pre><p>  }</p>
+</li>
+</ul>
+<h5 id="队列-Queue"><a href="#队列-Queue" class="headerlink" title="队列 Queue"></a>队列 Queue</h5><pre><code>use std::collections::VecDeque;</code></pre><ul>
+<li><p>FIFO（最先入队的元素最先出队）</p>
+</li>
+<li><p>VecDeque 的 push_back, pop_front, pop_back（可在双端操作）</p>
+</li>
+<li><p>环形队列：在队列中访问索引时，对最大容量取模</p>
+</li>
+<li><p>栈和队列可以互相实现</p>
+<pre><code>pub struct myStack&lt;T&gt;
+{
+    //TODO
+    q1:Queue&lt;T&gt;,
+    q2:Queue&lt;T&gt;
+}
+impl&lt;T&gt; myStack&lt;T&gt; {
+    pub fn new() -&gt; Self {
+        Self {
+            //TODO
+            q1:Queue::&lt;T&gt;::new(),
+            q2:Queue::&lt;T&gt;::new()
+            // q2的后端用于入栈
+            // q1的前端用于出栈
+            // 两者形成 U 形结构
+        }
+    }
+    pub fn push(&amp;mut self, elem: T) {
+        self.q1.enqueue(elem);
+        // 接下来需要将elem移动到栈顶
+        while let Ok(val) = self.q2.dequeue() {
+            self.q1.enqueue(val);
+            // 经过该操作后，q2被清空。所有元素全部进入q1，elem在队头（q1）
+        }
+        // 交换以确保q1为空，为下一次入栈做准备
+        std::mem::swap(&amp;mut self.q1, &amp;mut self.q2);
+    }
+    pub fn pop(&amp;mut self) -&gt; Result&lt;T, &amp;str&gt; {
+        //TODO
+        match self.q2.dequeue() {
+            Ok(val) =&gt; Ok(val),
+            Err(_) =&gt; Err(&quot;Stack is empty&quot;),
+        }
+
+    }
+    pub fn is_empty(&amp;self) -&gt; bool {
+        //TODO
+        self.q1.elements.is_empty() &amp;&amp; self.q2.elements.is_empty()
+    }
+}</code></pre></li>
+</ul>
+<h5 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h5><ul>
+<li>自定义排序：Ord Trait</li>
+</ul>
+<h6 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h6><ul>
+<li><p>将2/多个有序子数组进行排序<br>  先划分块（尽量等分），直到各个数组长度为1或2（长度尽量相等）</p>
+</li>
+<li><p>具体过程：<br>假设一开始是a0和b0比，比如说如果b0比较小，那么就把b0放进新数组，然后移动到b1（下标+=1），此时比较的是a0和b1，<br>以此类推，如果一个数组已经空了，就把另一个剩下的元素全部放进新数组，至此归并排序完成。</p>
+</li>
+</ul>
+<h6 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h6><ul>
+<li><p>选定基准数字，将小于其的放在左边，大于其的放在右边</p>
+</li>
+<li><p>Sort_unstable：value相同时不保证key原来的位置</p>
+</li>
+<li><p>目前最快的排序算法：Timsort（稳定），pdqsort（不稳定）<br>注：稳定是指是否必定保留排序前的相对顺序</p>
+</li>
+</ul>
+<h5 id="内存布局"><a href="#内存布局" class="headerlink" title="内存布局"></a>内存布局</h5><ul>
+<li>usize/isize：64为8 Bytes / 32为4 Bytes</li>
+<li>Sized Trait：静态大小，可以在编译时确切知道数据有多大</li>
+</ul>
+<h5 id="链表：线性关系"><a href="#链表：线性关系" class="headerlink" title="链表：线性关系"></a>链表：线性关系</h5><ol>
+<li><p>节点（Node）：<br>包含值和指向下一个节点的引用，在内存中的储存是分散的<br>插入节点时必须先连接再断开，否则很可能造成内存泄漏</p>
+<p>struct Node<T> {<br>  val: T,<br>  next: Option&lt;NonNull&lt;Node<T>&gt;&gt;,<br>}</T></T></p>
+</li>
+<li><p>解引用裸指针在Rust中视为unsafe</p>
+</li>
+<li><p>建议不要用Rust写链表，可以直接用标准库的<code>std::collections::LinkedList</code>（是双向链表）</p>
+</li>
+</ol>
+<hr>
+<h5 id="二叉搜索树"><a href="#二叉搜索树" class="headerlink" title="二叉搜索树"></a>二叉搜索树</h5><pre><code>impl&lt;T&gt; BinarySearchTree&lt;T&gt;
+where
+    T: Ord,
+{
+
+    fn new() -&gt; Self {
+        BinarySearchTree { root: None }
+    }
+
+    // Insert a value into the BST
+    fn insert(&amp;mut self, value: T) {
+        match &amp;mut self.root {
+            None =&gt; {
+                self.root = Some(Box::new(TreeNode::new(value)));
+            },
+            Some(root) =&gt; {
+                // 如果root中已经有值，那就直接在root中insert，
+                // 节点的insert已经实现了自动查找空的left和right
+                root.insert(value);
+            }
+        }
+    }
+
+    // Search for a value in the BST
+    fn search(&amp;self, value: T) -&gt; bool {
+        //TODO
+        match &amp;self.root {
+            None =&gt; {
+                false
+            },
+            Some(root) =&gt; {
+                //同上，节点处已经实现了search
+                root.search(value)
+            }
+        }
+    }
+}
+
+impl&lt;T&gt; TreeNode&lt;T&gt;
+where
+    T: Ord,
+{
+    // Insert a node into the tree
+    fn insert(&amp;mut self, value: T) {
+        // 向二叉搜索树中插入元素
+        match value.cmp(&amp;self.value) {
+            // 其实就是比较大小，只是Ordering可以让不需要操作的情况正常存在
+            // 比根节点小的放在左侧，大的放右侧，接下去的每一层都这样实现
+            Ordering::Less =&gt; {
+                match &amp;mut self.left {
+                    // 左侧没有节点时创建储存value的新节点
+                    // 否则在下一级递归调用insert，直到没有节点为止
+                    Some(left) =&gt; left.insert(value),
+                    None =&gt; {
+                        self.left = Some(Box::new(TreeNode::new(value)));
+                    },
+                }
+            },
+            Ordering::Greater =&gt; {
+                match &amp;mut self.right {
+                    Some(right) =&gt; right.insert(value),
+                    None =&gt; {
+                        self.right = Some(Box::new(TreeNode::new(value)));
+                    },
+                }
+            },
+            Ordering::Equal =&gt; {
+                // 二叉树中不需要重复的元素
+            }
+        }
+    }
+
+    fn search(&amp;self, value: T) -&gt; bool {
+        // 搜索树中的指定元素
+        match value.cmp(&amp;self.value) {
+            Ordering::Less =&gt; match &amp;self.left {
+                // 如果要找的值比当前节点小，说明符合条件的值在子树的左侧
+                Some(ref left) =&gt; left.search(value),
+                None =&gt; false,
+            }
+            Ordering::Greater =&gt; match &amp;self.right {
+                Some(ref right) =&gt; right.search(value),
+                None =&gt; false,
+            }
+            Ordering::Equal =&gt; true
+        }
+    }
+}</code></pre><hr>
+<h5 id="图"><a href="#图" class="headerlink" title="图"></a>图</h5><ul>
+<li>图可分为有向图/无向图，连通图/非连通图（有孤立节点）</li>
+</ul>
+<p>BFS与DFS中的self类型（Graph）采用如下定义：</p>
+<pre><code>struct Graph {
+    adj: Vec&lt;Vec&lt;usize&gt;&gt;, 
+}
+
+impl Graph {
+    fn new(n: usize) -&gt; Self {
+        Graph {
+            adj: vec![vec![]; n],
+        }
+    }
+
+    fn add_edge(&amp;mut self, src: usize, dest: usize) {
+        self.adj[src].push(dest);
+        self.adj[dest].push(src); 
+    }
+}</code></pre><hr>
+<h6 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h6><pre><code>fn bfs_with_return(&amp;self, start: usize) -&gt; Vec&lt;usize&gt; {
+
+    // BFS 广度优先搜索
+    // 要求：先访问初始节点所有没有访问过的邻节点，
+    // 再按上述顺序依次访问下一级邻节点，
+    // 直到所有节点被访问过
+
+    // 初始化
+    // visited 用于标记图中的元素是否已经被访问过
+    // visit_order 相当于栈，按访问顺序（广度优先）返回元素
+    // queue 为双端队列，是BFS实现的关键
+    let mut visit_order = vec![];
+    let mut visited = vec![false; self.adj.len()];
+    let mut queue = VecDeque::new();
+
+    // 初始化开始的节点 start，并作为访问的第一个元素，
+    // 同时令其进入队列
+    visited[start] = true;
+    queue.push_back(start);
+    visit_order.push(start);
+
+    // 接下来在 queue 前端获取一个节点作为当前操作的节点
+    while let Some(current_node) = queue.pop_front() {
+        // 在本题的结构 Graph 中，
+        // 节点通过边连接的其他节点以邻接数组方式存储，
+        // （由于邻接矩阵唯一，因此广度优先遍历序列也唯一）
+        for &amp;neighbor_node in &amp;self.adj[current_node] {
+            // 然后遍历当前节点连接的所有节点
+            // 看这些节点有没有被访问过
+            if !visited[neighbor_node] {
+                // 如果没有访问过，那就访问并修改访问标记
+                visit_order.push(neighbor_node);
+                queue.push_back(neighbor_node);
+                visited[neighbor_node] = true;
+            }
+        }
+        // 直到所有节点全部被访问，则pop_front将返回None，从而退出循环
+    }
+
+    visit_order
+}</code></pre><hr>
+<h6 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h6><pre><code>fn dfs_util(&amp;self, v: usize, visited: &amp;mut HashSet&lt;usize&gt;, visit_order: &amp;mut Vec&lt;usize&gt;) {
+    // DFS 深度优先算法
+    // 要求：从初始节点开始向远处访问，直到没有后继节点，
+    // 然后回溯到最近的且连接未访问节点的节点
+    // 重复上述过程
+
+    // 本题限制只能用HashSet，已经访问的元素可以放进HashSet中
+    // 以下因为应用递归，所以每一次调用该方法都会使得输入的 v 
+    // 通过开头的两条语句设置为已经被访问，因此只需要往下套即可
+    visit_order.push(v);
+    visited.insert(v);
+
+    for &amp;neighbor_node in &amp;self.adj[v] {
+        if !visited.contains(&amp;neighbor_node) {
+            self.dfs_util(neighbor_node, visited, visit_order)
+        }
+    }
+
+    // 以下为 DFS 提供了一种非递归的实现
+    #[cfg(feature = &quot;non-recursive&quot;)]
+    {
+        let mut stack = vec![];
+        // 此时v即为上题的start
+        stack.push(v);
+        visit_order.push(v);
+        visited.insert(v);
+        while let Some(current_node) = stack.pop() {
+            for &amp;neighbor_node in &amp;self.adj[current_node] {
+                if !visited.contains(&amp;neighbor_node) {
+                    stack.push(neighbor_node);
+                    visit_order.push(neighbor_node);
+                    visited.insert(neighbor_node);
+                }
+            }
+        }
+    }
+}
+
+// Perform a depth-first search on the graph, return the order of visited nodes
+fn dfs(&amp;self, start: usize) -&gt; Vec&lt;usize&gt; {
+    let mut visited = HashSet::new();
+    let mut visit_order = Vec::new(); 
+    self.dfs_util(start, &amp;mut visited, &amp;mut visit_order);
+    visit_order
+}</code></pre><hr>
+<h4 id="第一阶段总结"><a href="#第一阶段总结" class="headerlink" title="第一阶段总结"></a>第一阶段总结</h4><p>第一阶段虽然说迟了一两天完成，不过好在对Rust的理解更加深刻了。希望能顺利完成第二阶段。不过，算法那部分还是比较薄弱，在第二阶段应该会有更多的实际应用来巩固，期待第二阶段！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://rcore-os.github.io/blog/2024/04/29/2024%E6%98%A5%E5%AD%A3%E5%BC%80%E6%BA%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%AD%E7%BB%83%E8%90%A5%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93-Jiawens/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="rcore-os Group">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rcore-os Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2024/04/29/2024%E6%98%A5%E5%AD%A3%E5%BC%80%E6%BA%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%AD%E7%BB%83%E8%90%A5%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93-Jiawens/" class="post-title-link" itemprop="url">2024春季开源操作系统训练营第一阶段总结-Jiawens</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-04-29 22:01:13" itemprop="dateCreated datePublished" datetime="2024-04-29T22:01:13+00:00">2024-04-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-05-01 16:59:02" itemprop="dateModified" datetime="2024-05-01T16:59:02+00:00">2024-05-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>去年秋季已经参加过一次训练营，完成了第一阶段和第二阶段的一半，因此这次训练营的第一阶段完成得很快，只用了两三天左右，感知到的最显著的变化是后面算法题的加入：</p>
+<ul>
+<li>单向链表的合并：涉及 <code>NonNull</code></li>
+<li>双向链表的反序</li>
+<li>排序算法的实现</li>
+<li>二叉查找树的插入、搜索</li>
+<li>图的广度及深度优先搜索算法实现</li>
+<li>使用栈来检测括号是否配对</li>
+<li>使用队列实现栈</li>
+<li>实现二叉堆的插入、遍历</li>
+<li>实现图</li>
+</ul>
+<p>在尝试解决这些问题的过程中，我查阅了许多资料，了解到了很多未曾听说过的概念，希望在第二阶段里也能跟上进度，一路披荆斩棘。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/37/">37</a><a class="extend next" rel="next" href="/blog/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+        </div>
+        
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rcore-os Group</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
